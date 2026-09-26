@@ -1,0 +1,14 @@
+{
+  "name": "DeltaUp — دلتا آپ",
+  "short_name": "DeltaUp",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#102A43",
+  "theme_color": "#102A43",
+  "icons": [
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
