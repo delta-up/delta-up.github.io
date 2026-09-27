@@ -249,6 +249,157 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
   .ctrl,.progress{display:none!important}
   .slide.enter .sl{animation:none}
 }
+
+/* ===== Guess the Δ ===== */
+.slide.game{background:radial-gradient(80% 70% at 72% 62%,rgba(105,165,255,.16),transparent 62%),#102A43}
+.sl-game{max-width:1100px;-webkit-touch-callout:none}
+.sl-game [hidden]{display:none!important}
+.g-screen{display:grid;gap:clamp(12px,2.2vh,22px)}
+.g-btn{appearance:none;-webkit-appearance:none;border:0;border-radius:14px;min-height:56px;padding:0 28px;background:#C6F24E;color:#102A43;font-family:var(--display);font-weight:800;font-size:1.12rem;cursor:pointer;touch-action:manipulation;transition:transform .12s ease,background .2s ease}
+.g-btn:active{transform:scale(.97)}
+.g-btn:disabled{background:#26405C;color:#9DB0C4;cursor:default;transform:none}
+.g-btn:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}
+.g-btn-ghost{background:transparent;color:#FFFFFF;border:1.5px solid #3A5878}
+
+/* intro */
+.g-intro{justify-items:center;text-align:center;cursor:pointer}
+.g-hero{display:flex;align-items:flex-end;gap:18px;height:clamp(110px,20vh,180px)}
+.g-hero span{display:block;width:clamp(44px,6vw,64px);border-radius:8px 8px 3px 3px}
+.g-hero-b{height:42%;background:#9CAFC7}
+.g-hero-a{height:100%;background:#69A5FF;transform-origin:bottom;animation:gPump 2.4s ease-in-out infinite}
+@keyframes gPump{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1)}}
+.g-kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#C6F24E;font-weight:600}
+.g-title{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:#FFFFFF}
+.g-sub{max-width:40ch;color:#B7C7D9;font-size:clamp(1rem,1.8vw,1.25rem);line-height:1.5}
+.g-play{min-width:220px;min-height:64px;font-size:1.3rem;animation:gGlow 2.4s ease-in-out infinite}
+@keyframes gGlow{0%,100%{box-shadow:0 0 0 0 rgba(198,242,78,0)}50%{box-shadow:0 0 0 10px rgba(198,242,78,.18)}}
+.g-best{font-family:var(--mono);font-size:.9rem;color:#B7C7D9}
+.g-note{font-size:.75rem;color:#8FA3BA}
+
+/* round */
+.g-round{grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"head head" "info stage" "btn stage";column-gap:clamp(20px,4vw,56px);align-items:start}
+.g-round.enter{animation:gIn .28s ease-out}
+html.fa .g-round{--gin:-24px}
+@keyframes gIn{from{opacity:.2;transform:translateX(var(--gin,24px))}to{opacity:1;transform:none}}
+.g-head{grid-area:head;display:flex;align-items:center;gap:14px}
+.g-dots{display:flex;gap:6px}
+.g-dots i{display:block;width:22px;height:6px;border-radius:3px;background:#26405C}
+.g-dots i.done{background:#C6F24E}
+.g-dots i.now{background:#69A5FF}
+.g-roundlabel{font-family:var(--mono);font-size:.82rem;color:#B7C7D9}
+.g-score{margin-inline-start:auto;font-family:var(--mono);font-size:.85rem;color:#B7C7D9;display:flex;align-items:baseline;gap:8px}
+.g-score b{font-family:var(--display);font-size:1.5rem;color:#FFFFFF;font-variant-numeric:tabular-nums}
+.g-info{grid-area:info;display:grid;gap:12px;align-content:start}
+.g-proj{display:flex;align-items:center;gap:12px}
+.g-ic{width:56px;height:56px;border-radius:14px;background:#E3EBFD;display:grid;place-items:center;flex:none;
+  --surface:#FFFFFF;--ink:#102A43;--accent:#2563EB;--before:#8896A8;--tape:#C6F24E;--accent-soft:#E3EBFD}
+.g-ic svg{width:46px;height:46px}
+.g-area{font-family:var(--display);font-weight:800;font-size:1.3rem;color:#FFFFFF}
+.g-q{font-size:clamp(1.02rem,1.9vw,1.3rem);line-height:1.5;color:#E8EEF5}
+.g-feedback{display:grid;gap:8px;align-content:start;min-height:7.5em}
+.g-feedback.pop{animation:gPop .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes gPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.g-verdict{font-family:var(--display);font-weight:800;font-size:clamp(1.4rem,2.6vw,2rem);color:#C6F24E;line-height:1.2}
+.g-chip,.g-chipsm{justify-self:start;display:inline-block;background:#C6F24E;color:#102A43;font-family:var(--mono);font-weight:700;border-radius:8px;white-space:nowrap}
+.g-chip{padding:6px 12px;font-size:1rem}
+.g-chipsm{padding:2px 8px;font-size:.8rem}
+.g-fact{color:#B7C7D9;font-size:.98rem;line-height:1.5}
+.g-main{grid-area:btn;justify-self:start;min-width:240px}
+
+/* stage */
+.g-stage{grid-area:stage;position:relative;height:clamp(260px,52vh,440px);display:grid;grid-template-columns:1fr 1fr;column-gap:16%;
+  padding:52px 12% 40px;touch-action:none;cursor:ns-resize;border-radius:18px;background:rgba(255,255,255,.035);outline:none}
+.g-stage:focus-visible{box-shadow:0 0 0 3px #FFFFFF}
+.g-unit{position:absolute;top:14px;left:16px;right:16px;font-family:var(--mono);font-size:.72rem;color:#9DB0C4;letter-spacing:.03em;text-align:start}
+.g-grid{position:absolute;left:12%;right:12%;top:52px;bottom:40px;pointer-events:none;
+  background-image:repeating-linear-gradient(to top,rgba(255,255,255,.07) 0 1px,transparent 1px 25%)}
+.g-stage::after{content:"";position:absolute;left:8%;right:8%;bottom:39px;height:2px;border-radius:1px;background:#FFFFFF}
+.g-col{position:relative;height:100%;--h:0%;--g:0%}
+.g-bar{position:absolute;left:0;right:0;bottom:0;height:max(4px,var(--h));border-radius:10px 10px 0 0;transition:height .8s cubic-bezier(.2,.8,.2,1)}
+.g-bar-b{background:#9CAFC7}
+.g-bar-a{background:#69A5FF}
+.g-stage.dragging .g-bar-a{transition:none;box-shadow:0 0 0 6px rgba(105,165,255,.22),0 14px 40px rgba(105,165,255,.35)}
+.g-stage.g-instant .g-bar{transition:none}
+.g-handle{position:absolute;top:8px;left:50%;width:36px;height:6px;margin-left:-18px;border-radius:3px;background:rgba(255,255,255,.85)}
+.g-val{position:absolute;left:50%;bottom:calc(max(4px,var(--h)) + 10px);transform:translateX(-50%);white-space:nowrap;
+  font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.6vw,2rem);line-height:1;color:#FFFFFF;font-variant-numeric:tabular-nums}
+.g-col-b .g-val{color:#B7C7D9;font-size:clamp(1.1rem,2vw,1.5rem)}
+.g-lab{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:12px;white-space:nowrap;font-family:var(--mono);font-size:.76rem;color:#B7C7D9}
+.g-hint{position:absolute;left:50%;bottom:calc(max(4px,var(--h)) + 50px);transform:translateX(-50%);white-space:nowrap;pointer-events:none;
+  font-family:var(--mono);font-size:.8rem;font-weight:600;color:#C6F24E;text-align:center;animation:gBob 1.2s ease-in-out infinite}
+.g-hint::before{content:"↑";display:block;font-size:1.4rem;line-height:1}
+@keyframes gBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-8px)}}
+.g-ghost{position:absolute;left:-6px;right:-6px;bottom:0;height:max(4px,var(--g));border:2px dashed #FFFFFF;border-bottom:0;border-radius:12px 12px 0 0;opacity:.75;pointer-events:none}
+.g-ghost-lab{position:absolute;left:50%;bottom:max(6px,calc(var(--g) - 24px));transform:translateX(-50%);white-space:nowrap;pointer-events:none;
+  font-family:var(--mono);font-size:.72rem;color:#FFFFFF;background:rgba(16,42,67,.55);padding:1px 6px;border-radius:4px}
+.g-pts{position:absolute;left:50%;bottom:calc(var(--h) + 56px);font-family:var(--display);font-weight:800;font-size:1.6rem;color:#C6F24E;pointer-events:none;
+  animation:gFloat 1s ease-out forwards}
+@keyframes gFloat{0%{opacity:0;transform:translate(-50%,10px)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-40px)}}
+.g-burst{position:absolute;left:50%;bottom:var(--h);width:0;height:0;pointer-events:none}
+.g-burst i{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border-radius:2px;animation:gBurst .9s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes gBurst{from{transform:translate(0,0) rotate(0);opacity:1}to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+
+/* final */
+.g-final{justify-items:center;text-align:center}
+.g-rank{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;color:#C6F24E;line-height:1.05}
+.g-total{font-family:var(--mono);color:#B7C7D9;font-size:1.05rem;display:flex;align-items:baseline;gap:10px;justify-content:center}
+.g-total b{font-family:var(--display);font-size:clamp(2.4rem,6vw,3.4rem);color:#FFFFFF;font-variant-numeric:tabular-nums}
+.g-newbest{background:#C6F24E;color:#102A43;font-weight:800;padding:4px 14px;border-radius:999px;font-size:.9rem}
+.g-insight{max-width:46ch;color:#E8EEF5;font-size:1.08rem;line-height:1.5}
+.g-sum{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%;max-width:820px}
+.g-sum li{background:#16324F;border:1px solid #264463;border-radius:14px;padding:14px;display:grid;justify-items:center;gap:6px}
+.g-mini{display:flex;align-items:flex-end;gap:6px;height:52px}
+.g-mini i{display:block;width:16px;border-radius:4px 4px 1px 1px}
+.g-mini i:first-child{background:#9CAFC7}
+.g-mini i:last-child{background:#69A5FF;height:100%}
+.g-sum b{font-size:.98rem;color:#FFFFFF}
+.g-sum span{font-family:var(--mono);font-size:.85rem;color:#B7C7D9}
+.g-sum span.g-chipsm{color:#102A43;font-size:.8rem;justify-self:center}
+.g-col-a .g-val{z-index:2}
+.g-tagline{font-family:var(--display);font-weight:700;color:#FFFFFF;font-size:1.08rem}
+.g-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+html.fa .g-kicker{letter-spacing:0;text-transform:none;font-size:.9rem}
+
+/* phones */
+@media (max-width:760px){
+  .g-round{grid-template-columns:1fr;grid-template-areas:"head" "info" "stage" "btn";row-gap:12px}
+  .g-feedback{min-height:0}
+  .g-round.is-revealed .g-q{display:none}
+  .g-stage{height:clamp(220px,34vh,340px);padding:46px 14% 38px}
+  .g-stage::after{bottom:37px}
+  .g-grid{top:46px;bottom:38px}
+  .g-main{justify-self:stretch;width:100%;min-width:0}
+  .g-q{font-size:1rem}
+  .g-sum{grid-template-columns:1fr}
+  .g-sum li{grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;justify-items:start;text-align:start;align-items:center;column-gap:12px;row-gap:2px;padding:10px 12px}
+  .g-sum .g-mini{grid-row:1 / span 2;height:40px}
+  .g-sum b{grid-column:2;grid-row:1}
+  .g-sum span{grid-column:2;grid-row:2}
+  .g-sum .g-chipsm{grid-column:3;grid-row:1 / span 2}
+  .g-actions{flex-direction:column;width:100%}
+  .g-actions .g-btn{width:100%}
+}
+@media (max-width:760px) and (max-height:700px){ .g-fact{display:none} .g-hero{height:90px} }
+@media (max-height:560px) and (orientation:landscape){
+  .g-fact,.g-note{display:none}
+  .g-stage{height:58vh;padding-top:40px}
+  .g-grid{top:40px}
+  .g-hero{height:80px}
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .g-hero-a,.g-play,.g-hint{animation:none}
+  .g-bar{transition:none}
+  .g-round.enter,.g-feedback.pop{animation:none}
+}
+
+/* print: the game prints its Intro screen */
+@media print{
+  .slide.game .sl-game .g-screen{display:none!important}
+  .slide.game .sl-game .g-intro{display:grid!important}
+  .g-hero-a,.g-play{animation:none}
+}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
 <defs>
@@ -358,7 +509,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
 </div>
 <div class="progress" aria-hidden="true"><i id="bar"></i></div>
 <main class="deck" id="deck">
-<section class="slide navy title" id="s1" aria-roledescription="slide" aria-label="1 / 16"><div class="sl sl-en" lang="en"><svg class="logo logo-xl" viewBox="0 0 538 160" role="img" aria-label="DeltaUp"><use href="#du-logo"></use></svg>
+<section class="slide navy title" id="s1" aria-roledescription="slide" aria-label="1 / 17"><div class="sl sl-en" lang="en"><svg class="logo logo-xl" viewBox="0 0 538 160" role="img" aria-label="DeltaUp"><use href="#du-logo"></use></svg>
     <p class="tagline">Improving performance through technology; delivering measurable results.</p>
     <h1>Performance goes up. <span class="accent">The numbers prove it.</span></h1>
     <p class="lead">We find the bottleneck, measure it, improve it with technology, then measure it again the same way.</p>
@@ -367,14 +518,14 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
     <h1>عملکرد بالا می‌رود. <span class="accent">عددها ثابتش می‌کنند.</span></h1>
     <p class="lead">گلوگاه را پیدا می‌کنیم، اندازه‌اش می‌گیریم، با فناوری بهبودش می‌دهیم و دوباره با همان روش اندازه می‌گیریم.</p>
     <p class="site">deltaup.ir</p></div></section>
-<section class="slide " id="s2" aria-roledescription="slide" aria-label="2 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">Why DeltaUp</p>
+<section class="slide " id="s2" aria-roledescription="slide" aria-label="2 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">Why DeltaUp</p>
     <h2>Most AI projects start with a tool. We start with work that is stuck.</h2><div class="vs"><div class="vs-row vs-head"><span>Tool-first</span><span>Bottleneck-first</span></div><div class="vs-row"><span class="vs-old">Starts with a technology and looks for a use</span><span class="vs-new">Starts with a queue of work that waits</span></div><div class="vs-row"><span class="vs-old">“It feels faster”</span><span class="vs-new">Minutes per unit, before and after</span></div><div class="vs-row"><span class="vs-old">The vendor reports the result</span><span class="vs-new">The process owner signs the baseline and the result</span></div><div class="vs-row"><span class="vs-old">Promises “10×” before looking</span><span class="vs-new">Sets the target after the baseline is measured</span></div><div class="vs-row"><span class="vs-old">Sells licences and hours</span><span class="vs-new">Is paid only for a measured difference</span></div></div></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">چرا دلتا آپ</p>
     <h2>بیشتر پروژه‌های هوش مصنوعی از یک ابزار شروع می‌شوند. ما از کاری شروع می‌کنیم که گیر کرده است.</h2><div class="vs"><div class="vs-row vs-head"><span>ابزارمحور</span><span>گلوگاه‌محور</span></div><div class="vs-row"><span class="vs-old">با یک فناوری شروع می‌کند و دنبال کاربرد می‌گردد</span><span class="vs-new">با صفی از کار شروع می‌کند که منتظر مانده است</span></div><div class="vs-row"><span class="vs-old">«به نظر سریع‌تر است»</span><span class="vs-new">دقیقه به ازای هر واحد، قبل و بعد</span></div><div class="vs-row"><span class="vs-old">فروشنده نتیجه را گزارش می‌کند</span><span class="vs-new">مالک فرایند خط مبنا و نتیجه را امضا می‌کند</span></div><div class="vs-row"><span class="vs-old">پیش از بررسی، وعدهٔ «۱۰ برابر» می‌دهد</span><span class="vs-new">هدف را پس از اندازه‌گیری خط مبنا تعیین می‌کند</span></div><div class="vs-row"><span class="vs-old">لایسنس و ساعت کار می‌فروشد</span><span class="vs-new">فقط برای تفاوتِ اندازه‌گیری‌شده دستمزد می‌گیرد</span></div></div></div></section>
-<section class="slide " id="s3" aria-roledescription="slide" aria-label="3 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">The Delta Method</p><h2>Five stages. Each one ends at a gate.</h2><ol class="steps"><li class="step"><span class="step-n">01</span><b>Find</b><span class="step-a">Find the problem</span><span class="step-g">Gate: an owner who wants it fixed</span></li><li class="step"><span class="step-n">02</span><b>Baseline</b><span class="step-a">Measure before</span><span class="step-g">Gate: the owner signs the baseline</span></li><li class="step"><span class="step-n">03</span><b>Build</b><span class="step-a">Tool and solution</span><span class="step-g">Gate: works on real cases in shadow mode</span></li><li class="step"><span class="step-n">04</span><b>Prove</b><span class="step-a">Measure after</span><span class="step-g">Gate: target met, no guardrail worse</span></li><li class="step"><span class="step-n">05</span><b>Scale</b><span class="step-a">Efficiency, then repeat</span><span class="step-g">Gate: monitoring live, next bottleneck chosen</span></li></ol><p class="loop"><span aria-hidden="true">↺</span> Fixing one constraint moves the constraint. Stage 05 hands the next bottleneck back to Stage 01.</p></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">روش دلتا</p><h2>پنج مرحله. هر مرحله به یک دروازه ختم می‌شود.</h2><ol class="steps"><li class="step"><span class="step-n">۰۱</span><b>یافتن</b><span class="step-a">پیدا کردن مسئله</span><span class="step-g">دروازه: مالکی که خواهان رفع آن است</span></li><li class="step"><span class="step-n">۰۲</span><b>خط مبنا</b><span class="step-a">اندازه‌گیری قبل</span><span class="step-g">دروازه: مالک خط مبنا را امضا می‌کند</span></li><li class="step"><span class="step-n">۰۳</span><b>ساخت</b><span class="step-a">ابزار و راهکار</span><span class="step-g">دروازه: در حالت سایه روی موارد واقعی جواب می‌دهد</span></li><li class="step"><span class="step-n">۰۴</span><b>اثبات</b><span class="step-a">اندازه‌گیری بعد</span><span class="step-g">دروازه: هدف محقق شده و هیچ شاخص محافظی بدتر نشده</span></li><li class="step"><span class="step-n">۰۵</span><b>گسترش</b><span class="step-a">افزایش بهره‌وری، سپس تکرار</span><span class="step-g">دروازه: پایش فعال و گلوگاه بعدی انتخاب‌شده</span></li></ol><p class="loop"><span aria-hidden="true">↺</span> رفع یک محدودیت، محدودیت را جابه‌جا می‌کند. مرحلهٔ ۰۵ گلوگاه بعدی را به مرحلهٔ ۰۱ تحویل می‌دهد.</p></div></section>
-<section class="slide " id="s4" aria-roledescription="slide" aria-label="4 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">What we measure</p><h2>Efficiency is four numbers, not one.</h2><div class="dgrid"><div class="dcard"><b>Time</b><span>How fast does one unit of work get through?</span><span class="chips"><i>min / unit</i><i>lead time</i><i>wait</i></span></div><div class="dcard"><b>Quality</b><span>How often is it right the first time?</span><span class="chips"><i>error rate</i><i>rework</i><i>hit rate</i></span></div><div class="dcard"><b>Cost</b><span>What does one unit cost, all-in?</span><span class="chips"><i>cost / unit</i><i>staff-hours</i></span></div><div class="dcard"><b>Capacity</b><span>How much more can the same team handle?</span><span class="chips"><i>units / day</i><i>backlog</i></span></div></div><p class="guard"><b>Guardrails:</b> every project improves one primary number and protects the rest, such as fairness, customer experience and compliance.</p></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">چه چیزی را اندازه می‌گیریم</p><h2>بهره‌وری چهار عدد است، نه یکی.</h2><div class="dgrid"><div class="dcard"><b>زمان</b><span>یک واحد کار با چه سرعتی عبور می‌کند؟</span><span class="chips"><i>دقیقه / واحد</i><i>زمان انتظار</i></span></div><div class="dcard"><b>کیفیت</b><span>چند وقت یک‌بار همان بار اول درست انجام می‌شود؟</span><span class="chips"><i>نرخ خطا</i><i>دوباره‌کاری</i></span></div><div class="dcard"><b>هزینه</b><span>یک واحد، با همهٔ هزینه‌ها، چقدر تمام می‌شود؟</span><span class="chips"><i>هزینه / واحد</i><i>نفرساعت</i></span></div><div class="dcard"><b>ظرفیت</b><span>همین تیم چقدر کار بیشتری می‌تواند انجام دهد؟</span><span class="chips"><i>واحد / روز</i><i>کار انباشته</i></span></div></div><p class="guard"><b>شاخص‌های محافظ:</b> هر پروژه یک عدد اصلی را بهتر می‌کند و از بقیه محافظت می‌کند؛ مثل انصاف، تجربهٔ مشتری و انطباق با مقررات.</p></div></section>
-<section class="slide " id="s5" aria-roledescription="slide" aria-label="5 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">Evidence</p><h2>Every number we report carries its evidence level.</h2><ol class="ladder"><li><span class="lv-id">L1</span><div><b>Estimate</b> <span class="muted">Interviews. Used to prioritize, never reported as a result.</span><span class="meter"><i style="width:25%" class=weak></i></span></div></li><li><span class="lv-id">L2</span><div><b>Observed</b> <span class="muted">A timed sample by us, 30 or more units.</span><span class="meter"><i style="width:50%"></i></span></div></li><li><span class="lv-id">L3</span><div><b>Logged</b> <span class="muted">System timestamps for the full population.</span><span class="meter"><i style="width:75%"></i></span></div></li><li><span class="lv-id">L4</span><div><b>Controlled</b> <span class="muted">Parallel run or control group in the same period.</span><span class="meter"><i style="width:100%"></i></span></div></li></ol><p class="note">Only L3 and L4 results count toward our fee.</p></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">شواهد</p><h2>هر عددی که گزارش می‌کنیم، سطح شواهدش را همراه دارد.</h2><ol class="ladder"><li><span class="lv-id">L1</span><div><b>تخمین</b> <span class="muted">مصاحبه. فقط برای اولویت‌بندی، هرگز به‌عنوان نتیجه.</span><span class="meter"><i style="width:25%" class=weak></i></span></div></li><li><span class="lv-id">L2</span><div><b>مشاهده‌شده</b> <span class="muted">نمونهٔ زمان‌سنجی‌شده توسط ما، ۳۰ واحد یا بیشتر.</span><span class="meter"><i style="width:50%"></i></span></div></li><li><span class="lv-id">L3</span><div><b>ثبت‌شده</b> <span class="muted">زمان‌ثبت‌های سیستم برای کل جامعه.</span><span class="meter"><i style="width:75%"></i></span></div></li><li><span class="lv-id">L4</span><div><b>کنترل‌شده</b> <span class="muted">اجرای موازی یا گروه کنترل در همان دوره.</span><span class="meter"><i style="width:100%"></i></span></div></li></ol><p class="note">فقط نتایج سطح L3 و L4 در دستمزد ما حساب می‌شوند.</p></div></section>
-<section class="slide " id="s6" aria-roledescription="slide" aria-label="6 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">Cases</p><h2>Six places where the difference is easy to see.</h2><div class="ogrid"><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-hr"></use></svg></span><span class="o-area">Human Resources</span><b>Resume review</b><span class="delta"><bdi>Δ</bdi> 20× faster</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-prod"></use></svg></span><span class="o-area">Production &amp; Planning</span><b>Machine downtime</b><span class="delta"><bdi>Δ</bdi> 43% less downtime</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-sales"></use></svg></span><span class="o-area">Sales &amp; Marketing</span><b>Lead response</b><span class="delta"><bdi>Δ</bdi> 380× faster</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-fin"></use></svg></span><span class="o-area">Finance &amp; Accounting</span><b>Month-end close</b><span class="delta"><bdi>Δ</bdi> 5 days sooner</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-supply"></use></svg></span><span class="o-area">Supply Chain</span><b>Demand forecast</b><span class="delta"><bdi>Δ</bdi> stockouts halved</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-proc"></use></svg></span><span class="o-area">Procurement</span><b>Purchase approvals</b><span class="delta"><bdi>Δ</bdi> 4× faster</span></div></div></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">نمونه‌ها</p><h2>شش جا که تفاوت به‌روشنی دیده می‌شود.</h2><div class="ogrid"><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-hr"></use></svg></span><span class="o-area">منابع انسانی</span><b>بررسی رزومه</b><span class="delta"><bdi>Δ</bdi> ۲۰ برابر سریع‌تر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-prod"></use></svg></span><span class="o-area">تولید و برنامه‌ریزی</span><b>توقف ماشین‌آلات</b><span class="delta"><bdi>Δ</bdi> ۴۳٪ توقف کمتر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-sales"></use></svg></span><span class="o-area">فروش و بازاریابی</span><b>پاسخ به سرنخ‌ها</b><span class="delta"><bdi>Δ</bdi> ۳۸۰ برابر سریع‌تر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-fin"></use></svg></span><span class="o-area">مالی و حسابداری</span><b>بستن حساب‌های ماه</b><span class="delta"><bdi>Δ</bdi> ۵ روز زودتر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-supply"></use></svg></span><span class="o-area">زنجیرهٔ تأمین</span><b>پیش‌بینی تقاضا</b><span class="delta"><bdi>Δ</bdi> کمبود نصف شد</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-proc"></use></svg></span><span class="o-area">تدارکات</span><b>تأیید درخواست خرید</b><span class="delta"><bdi>Δ</bdi> ۴ برابر سریع‌تر</span></div></div></div></section>
-<section class="slide " id="s7" aria-roledescription="slide" aria-label="7 / 16" hidden><div class="sl sl-en" lang="en"><div class="case">
+<section class="slide " id="s3" aria-roledescription="slide" aria-label="3 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">The Delta Method</p><h2>Five stages. Each one ends at a gate.</h2><ol class="steps"><li class="step"><span class="step-n">01</span><b>Find</b><span class="step-a">Find the problem</span><span class="step-g">Gate: an owner who wants it fixed</span></li><li class="step"><span class="step-n">02</span><b>Baseline</b><span class="step-a">Measure before</span><span class="step-g">Gate: the owner signs the baseline</span></li><li class="step"><span class="step-n">03</span><b>Build</b><span class="step-a">Tool and solution</span><span class="step-g">Gate: works on real cases in shadow mode</span></li><li class="step"><span class="step-n">04</span><b>Prove</b><span class="step-a">Measure after</span><span class="step-g">Gate: target met, no guardrail worse</span></li><li class="step"><span class="step-n">05</span><b>Scale</b><span class="step-a">Efficiency, then repeat</span><span class="step-g">Gate: monitoring live, next bottleneck chosen</span></li></ol><p class="loop"><span aria-hidden="true">↺</span> Fixing one constraint moves the constraint. Stage 05 hands the next bottleneck back to Stage 01.</p></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">روش دلتا</p><h2>پنج مرحله. هر مرحله به یک دروازه ختم می‌شود.</h2><ol class="steps"><li class="step"><span class="step-n">۰۱</span><b>یافتن</b><span class="step-a">پیدا کردن مسئله</span><span class="step-g">دروازه: مالکی که خواهان رفع آن است</span></li><li class="step"><span class="step-n">۰۲</span><b>خط مبنا</b><span class="step-a">اندازه‌گیری قبل</span><span class="step-g">دروازه: مالک خط مبنا را امضا می‌کند</span></li><li class="step"><span class="step-n">۰۳</span><b>ساخت</b><span class="step-a">ابزار و راهکار</span><span class="step-g">دروازه: در حالت سایه روی موارد واقعی جواب می‌دهد</span></li><li class="step"><span class="step-n">۰۴</span><b>اثبات</b><span class="step-a">اندازه‌گیری بعد</span><span class="step-g">دروازه: هدف محقق شده و هیچ شاخص محافظی بدتر نشده</span></li><li class="step"><span class="step-n">۰۵</span><b>گسترش</b><span class="step-a">افزایش بهره‌وری، سپس تکرار</span><span class="step-g">دروازه: پایش فعال و گلوگاه بعدی انتخاب‌شده</span></li></ol><p class="loop"><span aria-hidden="true">↺</span> رفع یک محدودیت، محدودیت را جابه‌جا می‌کند. مرحلهٔ ۰۵ گلوگاه بعدی را به مرحلهٔ ۰۱ تحویل می‌دهد.</p></div></section>
+<section class="slide " id="s4" aria-roledescription="slide" aria-label="4 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">What we measure</p><h2>Efficiency is four numbers, not one.</h2><div class="dgrid"><div class="dcard"><b>Time</b><span>How fast does one unit of work get through?</span><span class="chips"><i>min / unit</i><i>lead time</i><i>wait</i></span></div><div class="dcard"><b>Quality</b><span>How often is it right the first time?</span><span class="chips"><i>error rate</i><i>rework</i><i>hit rate</i></span></div><div class="dcard"><b>Cost</b><span>What does one unit cost, all-in?</span><span class="chips"><i>cost / unit</i><i>staff-hours</i></span></div><div class="dcard"><b>Capacity</b><span>How much more can the same team handle?</span><span class="chips"><i>units / day</i><i>backlog</i></span></div></div><p class="guard"><b>Guardrails:</b> every project improves one primary number and protects the rest, such as fairness, customer experience and compliance.</p></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">چه چیزی را اندازه می‌گیریم</p><h2>بهره‌وری چهار عدد است، نه یکی.</h2><div class="dgrid"><div class="dcard"><b>زمان</b><span>یک واحد کار با چه سرعتی عبور می‌کند؟</span><span class="chips"><i>دقیقه / واحد</i><i>زمان انتظار</i></span></div><div class="dcard"><b>کیفیت</b><span>چند وقت یک‌بار همان بار اول درست انجام می‌شود؟</span><span class="chips"><i>نرخ خطا</i><i>دوباره‌کاری</i></span></div><div class="dcard"><b>هزینه</b><span>یک واحد، با همهٔ هزینه‌ها، چقدر تمام می‌شود؟</span><span class="chips"><i>هزینه / واحد</i><i>نفرساعت</i></span></div><div class="dcard"><b>ظرفیت</b><span>همین تیم چقدر کار بیشتری می‌تواند انجام دهد؟</span><span class="chips"><i>واحد / روز</i><i>کار انباشته</i></span></div></div><p class="guard"><b>شاخص‌های محافظ:</b> هر پروژه یک عدد اصلی را بهتر می‌کند و از بقیه محافظت می‌کند؛ مثل انصاف، تجربهٔ مشتری و انطباق با مقررات.</p></div></section>
+<section class="slide " id="s5" aria-roledescription="slide" aria-label="5 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">Evidence</p><h2>Every number we report carries its evidence level.</h2><ol class="ladder"><li><span class="lv-id">L1</span><div><b>Estimate</b> <span class="muted">Interviews. Used to prioritize, never reported as a result.</span><span class="meter"><i style="width:25%" class=weak></i></span></div></li><li><span class="lv-id">L2</span><div><b>Observed</b> <span class="muted">A timed sample by us, 30 or more units.</span><span class="meter"><i style="width:50%"></i></span></div></li><li><span class="lv-id">L3</span><div><b>Logged</b> <span class="muted">System timestamps for the full population.</span><span class="meter"><i style="width:75%"></i></span></div></li><li><span class="lv-id">L4</span><div><b>Controlled</b> <span class="muted">Parallel run or control group in the same period.</span><span class="meter"><i style="width:100%"></i></span></div></li></ol><p class="note">Only L3 and L4 results count toward our fee.</p></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">شواهد</p><h2>هر عددی که گزارش می‌کنیم، سطح شواهدش را همراه دارد.</h2><ol class="ladder"><li><span class="lv-id">L1</span><div><b>تخمین</b> <span class="muted">مصاحبه. فقط برای اولویت‌بندی، هرگز به‌عنوان نتیجه.</span><span class="meter"><i style="width:25%" class=weak></i></span></div></li><li><span class="lv-id">L2</span><div><b>مشاهده‌شده</b> <span class="muted">نمونهٔ زمان‌سنجی‌شده توسط ما، ۳۰ واحد یا بیشتر.</span><span class="meter"><i style="width:50%"></i></span></div></li><li><span class="lv-id">L3</span><div><b>ثبت‌شده</b> <span class="muted">زمان‌ثبت‌های سیستم برای کل جامعه.</span><span class="meter"><i style="width:75%"></i></span></div></li><li><span class="lv-id">L4</span><div><b>کنترل‌شده</b> <span class="muted">اجرای موازی یا گروه کنترل در همان دوره.</span><span class="meter"><i style="width:100%"></i></span></div></li></ol><p class="note">فقط نتایج سطح L3 و L4 در دستمزد ما حساب می‌شوند.</p></div></section>
+<section class="slide " id="s6" aria-roledescription="slide" aria-label="6 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">Cases</p><h2>Six places where the difference is easy to see.</h2><div class="ogrid"><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-hr"></use></svg></span><span class="o-area">Human Resources</span><b>Resume review</b><span class="delta"><bdi>Δ</bdi> 20× faster</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-prod"></use></svg></span><span class="o-area">Production &amp; Planning</span><b>Machine downtime</b><span class="delta"><bdi>Δ</bdi> 43% less downtime</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-sales"></use></svg></span><span class="o-area">Sales &amp; Marketing</span><b>Lead response</b><span class="delta"><bdi>Δ</bdi> 380× faster</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-fin"></use></svg></span><span class="o-area">Finance &amp; Accounting</span><b>Month-end close</b><span class="delta"><bdi>Δ</bdi> 5 days sooner</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-supply"></use></svg></span><span class="o-area">Supply Chain</span><b>Demand forecast</b><span class="delta"><bdi>Δ</bdi> stockouts halved</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-proc"></use></svg></span><span class="o-area">Procurement</span><b>Purchase approvals</b><span class="delta"><bdi>Δ</bdi> 4× faster</span></div></div></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">نمونه‌ها</p><h2>شش جا که تفاوت به‌روشنی دیده می‌شود.</h2><div class="ogrid"><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-hr"></use></svg></span><span class="o-area">منابع انسانی</span><b>بررسی رزومه</b><span class="delta"><bdi>Δ</bdi> ۲۰ برابر سریع‌تر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-prod"></use></svg></span><span class="o-area">تولید و برنامه‌ریزی</span><b>توقف ماشین‌آلات</b><span class="delta"><bdi>Δ</bdi> ۴۳٪ توقف کمتر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-sales"></use></svg></span><span class="o-area">فروش و بازاریابی</span><b>پاسخ به سرنخ‌ها</b><span class="delta"><bdi>Δ</bdi> ۳۸۰ برابر سریع‌تر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-fin"></use></svg></span><span class="o-area">مالی و حسابداری</span><b>بستن حساب‌های ماه</b><span class="delta"><bdi>Δ</bdi> ۵ روز زودتر</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-supply"></use></svg></span><span class="o-area">زنجیرهٔ تأمین</span><b>پیش‌بینی تقاضا</b><span class="delta"><bdi>Δ</bdi> کمبود نصف شد</span></div><div class="otile"><span class="otile-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-proc"></use></svg></span><span class="o-area">تدارکات</span><b>تأیید درخواست خرید</b><span class="delta"><bdi>Δ</bdi> ۴ برابر سریع‌تر</span></div></div></div></section>
+<section class="slide " id="s7" aria-roledescription="slide" aria-label="7 / 17" hidden><div class="sl sl-en" lang="en"><div class="case">
       <div class="case-l">
         <span class="case-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-hr"></use></svg></span>
         <p class="kicker">Human Resources</p>
@@ -405,7 +556,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
       </div>
     </div>
     <p class="proof"><b>چرا واقعی است:</b> اطلس مسائل منابع انسانی فقط در حوزهٔ غربالگری و تطبیق رزومه ۳۱ استارتاپ را فهرست کرده است.</p></div></section>
-<section class="slide " id="s8" aria-roledescription="slide" aria-label="8 / 16" hidden><div class="sl sl-en" lang="en"><div class="case">
+<section class="slide " id="s8" aria-roledescription="slide" aria-label="8 / 17" hidden><div class="sl sl-en" lang="en"><div class="case">
       <div class="case-l">
         <span class="case-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-prod"></use></svg></span>
         <p class="kicker">Production &amp; Planning</p>
@@ -436,7 +587,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
       </div>
     </div>
     <p class="proof"><b>چرا واقعی است:</b> Augury با ارزش بیش از ۱ میلیارد دلار، ماشین‌آلات PepsiCo، Colgate-Palmolive و Hershey&#x27;s را پایش می‌کند. به برآورد زیمنس، توقف برنامه‌ریزی‌نشده سالانه ۱٫۴ تریلیون دلار، یعنی ۱۱٪ درآمد ۵۰۰ شرکت بزرگ جهان، هزینه دارد.</p></div></section>
-<section class="slide " id="s9" aria-roledescription="slide" aria-label="9 / 16" hidden><div class="sl sl-en" lang="en"><div class="case">
+<section class="slide " id="s9" aria-roledescription="slide" aria-label="9 / 17" hidden><div class="sl sl-en" lang="en"><div class="case">
       <div class="case-l">
         <span class="case-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-sales"></use></svg></span>
         <p class="kicker">Sales &amp; Marketing</p>
@@ -467,7 +618,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
       </div>
     </div>
     <p class="proof"><b>چرا واقعی است:</b> Salesforce حدود ۱٫۲ میلیارد دلار برای Qualified پرداخت؛ شرکتی که دستیار فروش هوشمندش فوراً به سرنخ‌های ورودی پاسخ می‌دهد. پژوهش هاروارد بیزنس ریویو روی ۲٬۲۴۱ شرکت نشان داد پاسخ در کمتر از یک ساعت، احتمال واجد شرایط شدن سرنخ را حدود ۷ برابر می‌کند. میانگین زمان پاسخ ۴۲ ساعت بود.</p></div></section>
-<section class="slide " id="s10" aria-roledescription="slide" aria-label="10 / 16" hidden><div class="sl sl-en" lang="en"><div class="case">
+<section class="slide " id="s10" aria-roledescription="slide" aria-label="10 / 17" hidden><div class="sl sl-en" lang="en"><div class="case">
       <div class="case-l">
         <span class="case-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-fin"></use></svg></span>
         <p class="kicker">Finance &amp; Accounting</p>
@@ -498,7 +649,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
       </div>
     </div>
     <p class="proof"><b>چرا واقعی است:</b> FloQast با ارزش ۱٫۶ میلیارد دلار به بیش از ۲٬۶۰۰ تیم حسابداری خدمت می‌دهد. بنچمارک APQC روی ۲٬۳۰۰ سازمان، میانهٔ بستن حساب‌ها را ۶٫۴ روز می‌داند و یک نظرسنجی در ۲۰۲۵ نشان داد ۹۴٪ تیم‌های مالی هنوز در اکسل مغایرت‌گیری می‌کنند.</p></div></section>
-<section class="slide " id="s11" aria-roledescription="slide" aria-label="11 / 16" hidden><div class="sl sl-en" lang="en"><div class="case">
+<section class="slide " id="s11" aria-roledescription="slide" aria-label="11 / 17" hidden><div class="sl sl-en" lang="en"><div class="case">
       <div class="case-l">
         <span class="case-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-supply"></use></svg></span>
         <p class="kicker">Supply Chain</p>
@@ -529,7 +680,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
       </div>
     </div>
     <p class="proof"><b>چرا واقعی است:</b> RELEX Solutions با ارزش ۵٫۸ میلیارد دلار، پیش‌بینی و تأمین مجدد کالا را برای بیش از ۳۵۰ خرده‌فروش و تأمین‌کننده انجام می‌دهد. گروه IHL هزینهٔ جهانی کمبود و مازاد موجودی را سالانه ۱٫۷۷ تریلیون دلار، معادل ۶٫۵٪ فروش خرده‌فروشی، برآورد می‌کند.</p></div></section>
-<section class="slide " id="s12" aria-roledescription="slide" aria-label="12 / 16" hidden><div class="sl sl-en" lang="en"><div class="case">
+<section class="slide " id="s12" aria-roledescription="slide" aria-label="12 / 17" hidden><div class="sl sl-en" lang="en"><div class="case">
       <div class="case-l">
         <span class="case-ic"><svg class="ic" viewBox="0 0 120 120" aria-hidden="true"><use href="#ic-proc"></use></svg></span>
         <p class="kicker">Procurement</p>
@@ -560,7 +711,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
       </div>
     </div>
     <p class="proof"><b>چرا واقعی است:</b> Zip با ارزش ۲٫۲ میلیارد دلار، خرید سازمان‌های بزرگ را مدیریت می‌کند و بیش از ۶ میلیارد دلار صرفه‌جویی برای مشتریانش گزارش کرده است. Dollar Tree زمان چرخهٔ خریدش را ۷۰٪ کاهش داد.</p></div></section>
-<section class="slide tight" id="s13" aria-roledescription="slide" aria-label="13 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">Products & Agents</p><h2>Ready-made agents, each with a measured Δ.</h2><div class="ptable" role="table"><div class="prow phead" role="row"><span>Product</span><span>What it does</span><span>Primary metric · before → after</span><span>Our Δ</span></div><div class="prow">
+<section class="slide tight" id="s13" aria-roledescription="slide" aria-label="13 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">Products & Agents</p><h2>Ready-made agents, each with a measured Δ.</h2><div class="ptable" role="table"><div class="prow phead" role="row"><span>Product</span><span>What it does</span><span>Primary metric · before → after</span><span>Our Δ</span></div><div class="prow">
           <div class="p-id"><svg class="p-logo" viewBox="0 0 120 120" aria-hidden="true"><use href="#p-tickup"></use></svg><div><b>TickUp</b></div></div>
           <p class="p-what">OKRs with an AI Check-in Coach. Reviews every Key Result weekly and flags drift early.</p>
           <div class="p-metric"><span class="p-m">Key Results updated on time each week</span><span class="p-v"><span class="b">35%</span> → <span class="a">90%</span></span></div>
@@ -621,7 +772,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
           <div class="p-metric"><span class="p-m">شاخص شما، پس از خط مبنای امضاشده</span></div>
           <div class="p-delta"><svg class="dbars" viewBox="0 0 60 62" aria-hidden="true"><rect x="12" y="36" width="16" height="22" rx="3" fill="#8896A8"/><rect x="36" y="6" width="16" height="52" rx="3" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-dasharray="5 4"/><text x="44" y="37" text-anchor="middle" font-family="Manrope,Arial" font-weight="800" font-size="16" fill="#2563EB">?</text><line x1="6" y1="59" x2="56" y2="59" stroke="#102A43" stroke-width="2"/></svg><span class="delta delta-out">Δ را شما تعیین می‌کنید</span></div>
         </div></div><p class="note">اهداف نمونه‌اند. Δ واقعی هر محصول پس از خط مبنای امضاشده در سازمان شما تعیین می‌شود.</p></div></section>
-<section class="slide " id="s14" aria-roledescription="slide" aria-label="14 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">Pricing</p><h2>Pay only for the difference.</h2>
+<section class="slide " id="s14" aria-roledescription="slide" aria-label="14 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">Pricing</p><h2>Pay only for the difference.</h2>
     <div class="plans">
       <div class="plan"><p class="plan-t">Standard plan</p><p>Measured difference below the agreed target: <b>you pay nothing.</b></p><p>Target met: <b>one standard fee</b>, fixed in the contract before we measure.</p></div>
       <div class="plan plan-amb"><p class="plan-t">Ambitious plan</p><p class="muted">The fee rises in fixed, pre-agreed steps as the measured improvement grows.</p><div class="tiers"><div class="tier"><span>Below the target</span><span class="tb"><i style="width:0%"></i></span><b>0</b></div><div class="tier"><span>Target reached</span><span class="tb"><i style="width:40%"></i></span><b>1.0×</b></div><div class="tier"><span>1.5× the target</span><span class="tb"><i style="width:56%"></i></span><b>1.4×</b></div><div class="tier"><span>2× the target</span><span class="tb"><i style="width:72%"></i></span><b>1.8×</b></div><div class="tier"><span>3× or more</span><span class="tb"><i style="width:100%"></i></span><b>2.5× cap</b></div></div></div>
@@ -632,8 +783,63 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
       <div class="plan plan-amb"><p class="plan-t">طرح بلندپروازانه</p><p class="muted">هزینه با بزرگ‌تر شدن بهبود اندازه‌گیری‌شده، در پله‌های ثابت و ازپیش‌توافق‌شده بالا می‌رود.</p><div class="tiers"><div class="tier"><span>کمتر از هدف</span><span class="tb"><i style="width:0%"></i></span><b>۰</b></div><div class="tier"><span>رسیدن به هدف</span><span class="tb"><i style="width:40%"></i></span><b>۱٫۰×</b></div><div class="tier"><span>۱٫۵ برابر هدف</span><span class="tb"><i style="width:56%"></i></span><b>۱٫۴×</b></div><div class="tier"><span>۲ برابر هدف</span><span class="tb"><i style="width:72%"></i></span><b>۱٫۸×</b></div><div class="tier"><span>۳ برابر یا بیشتر</span><span class="tb"><i style="width:100%"></i></span><b>۲٫۵× سقف</b></div></div></div>
     </div>
     <p class="note">تفاوت فقط وقتی حساب می‌شود که در سطح L3 یا L4، با همان روش خط مبنای امضاشده اندازه‌گیری شود و هیچ شاخص محافظی بدتر نشده باشد.</p></div></section>
-<section class="slide " id="s15" aria-roledescription="slide" aria-label="15 / 16" hidden><div class="sl sl-en" lang="en"><p class="kicker">How we start</p><h2>Three steps, each one small enough to say no to.</h2><ol class="sgrid"><li class="scard"><span class="s-step">Step 1 · 2 weeks</span><b>Bottleneck Audit</b><span>We walk your processes, pull the logs and rank where time and money leak.</span><span class="s-fee">Free</span></li><li class="scard"><span class="s-step">Step 2 · 4–6 weeks</span><b>Proof Sprint</b><span>One bottleneck, from signed baseline to measured result.</span><span class="s-fee">Paid only if the target is met</span></li><li class="scard"><span class="s-step">Step 3 · ongoing</span><b>Scale & Ledger</b><span>Rollout, monitoring, a monthly Value Ledger and the next bottleneck.</span><span class="s-fee">Standard or Ambitious plan</span></li></ol></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">چطور شروع می‌کنیم</p><h2>سه گام، هرکدام آن‌قدر کوچک که بتوان به آن «نه» گفت.</h2><ol class="sgrid"><li class="scard"><span class="s-step">گام ۱ · ۲ هفته</span><b>ممیزی گلوگاه</b><span>فرایندها را طی می‌کنیم، لاگ‌ها را بیرون می‌کشیم و جاهایی را که زمان و پول نشت می‌کند رتبه‌بندی می‌کنیم.</span><span class="s-fee">رایگان</span></li><li class="scard"><span class="s-step">گام ۲ · ۴ تا ۶ هفته</span><b>اسپرینت اثبات</b><span>یک گلوگاه، از خط مبنای امضاشده تا نتیجهٔ اندازه‌گیری‌شده.</span><span class="s-fee">فقط در صورت تحقق هدف</span></li><li class="scard"><span class="s-step">گام ۳ · مستمر</span><b>گسترش و دفتر ارزش</b><span>استقرار، پایش، دفتر ارزش ماهانه و گلوگاه بعدی.</span><span class="s-fee">طرح استاندارد یا بلندپروازانه</span></li></ol></div></section>
-<section class="slide navy" id="s16" aria-roledescription="slide" aria-label="16 / 16" hidden><div class="sl sl-en" lang="en"><svg class="logo logo-md" viewBox="0 0 538 160" role="img" aria-label="DeltaUp"><use href="#du-logo"></use></svg>
+<section class="slide " id="s15" aria-roledescription="slide" aria-label="15 / 17" hidden><div class="sl sl-en" lang="en"><p class="kicker">How we start</p><h2>Three steps, each one small enough to say no to.</h2><ol class="sgrid"><li class="scard"><span class="s-step">Step 1 · 2 weeks</span><b>Bottleneck Audit</b><span>We walk your processes, pull the logs and rank where time and money leak.</span><span class="s-fee">Free</span></li><li class="scard"><span class="s-step">Step 2 · 4–6 weeks</span><b>Proof Sprint</b><span>One bottleneck, from signed baseline to measured result.</span><span class="s-fee">Paid only if the target is met</span></li><li class="scard"><span class="s-step">Step 3 · ongoing</span><b>Scale & Ledger</b><span>Rollout, monitoring, a monthly Value Ledger and the next bottleneck.</span><span class="s-fee">Standard or Ambitious plan</span></li></ol></div><div class="sl sl-fa" lang="fa" dir="rtl"><p class="kicker">چطور شروع می‌کنیم</p><h2>سه گام، هرکدام آن‌قدر کوچک که بتوان به آن «نه» گفت.</h2><ol class="sgrid"><li class="scard"><span class="s-step">گام ۱ · ۲ هفته</span><b>ممیزی گلوگاه</b><span>فرایندها را طی می‌کنیم، لاگ‌ها را بیرون می‌کشیم و جاهایی را که زمان و پول نشت می‌کند رتبه‌بندی می‌کنیم.</span><span class="s-fee">رایگان</span></li><li class="scard"><span class="s-step">گام ۲ · ۴ تا ۶ هفته</span><b>اسپرینت اثبات</b><span>یک گلوگاه، از خط مبنای امضاشده تا نتیجهٔ اندازه‌گیری‌شده.</span><span class="s-fee">فقط در صورت تحقق هدف</span></li><li class="scard"><span class="s-step">گام ۳ · مستمر</span><b>گسترش و دفتر ارزش</b><span>استقرار، پایش، دفتر ارزش ماهانه و گلوگاه بعدی.</span><span class="s-fee">طرح استاندارد یا بلندپروازانه</span></li></ol></div></section>
+<section class="slide navy game" id="s16" aria-roledescription="slide" aria-label="16 / 17" hidden><div class="sl sl-game" id="game" data-game data-no-advance>
+  <div class="g-screen g-intro" id="g-intro">
+    <div class="g-hero" aria-hidden="true"><span class="g-hero-b"></span><span class="g-hero-a"></span></div>
+    <p class="g-kicker" data-t="kicker">Mini-game · 30 seconds</p>
+    <h2 class="g-title" data-t="title">Guess the Δ</h2>
+    <p class="g-sub" data-t="introSub">3 real projects. Drag the blue bar to where you think DeltaUp takes them.</p>
+    <button type="button" class="g-btn g-play" id="g-play" data-t="play">Play</button>
+    <p class="g-best" id="g-best" hidden></p>
+    <p class="g-note" data-t="note">Example figures from the DeltaUp cases.</p>
+  </div>
+  <div class="g-screen g-round" id="g-round" hidden>
+    <div class="g-head">
+      <span class="g-dots" id="g-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="g-roundlabel" id="g-roundlabel"></span>
+      <span class="g-score"><span data-t="score">Score</span><b id="g-score">0</b></span>
+    </div>
+    <div class="g-info">
+      <div class="g-proj"><span class="g-ic"><svg viewBox="0 0 120 120" aria-hidden="true"><use id="g-ic-use" href="#ic-hr"></use></svg></span><p class="g-area" id="g-area"></p></div>
+      <p class="g-q" id="g-q"></p>
+      <div class="g-feedback" id="g-feedback" aria-live="polite"></div>
+    </div>
+    <div class="g-stage" id="g-stage" role="slider" tabindex="0" dir="ltr" data-no-swipe aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <span class="g-unit" id="g-unit"></span>
+      <div class="g-grid" aria-hidden="true"></div>
+      <div class="g-col g-col-b" id="g-col-b">
+        <span class="g-bar g-bar-b"></span>
+        <span class="g-val" id="g-val-b"></span>
+        <span class="g-lab" data-t="today">Today</span>
+      </div>
+      <div class="g-col g-col-a" id="g-col-a">
+        <span class="g-bar g-bar-a"><i class="g-handle"></i></span>
+        <span class="g-ghost" id="g-ghost" hidden></span>
+        <span class="g-ghost-lab" id="g-ghost-lab" hidden></span>
+        <span class="g-val" id="g-val-a"></span>
+        <span class="g-hint" id="g-hint" data-t="dragHint">Drag up</span>
+        <span class="g-lab" data-t="withDU">With DeltaUp</span>
+        <span class="g-burst" id="g-burst" aria-hidden="true"></span>
+      </div>
+    </div>
+    <button type="button" class="g-btn g-main" id="g-main" disabled>Drag the blue bar ↑</button>
+  </div>
+  <div class="g-screen g-final" id="g-final" hidden>
+    <p class="g-kicker" data-t="finalKicker">Your result</p>
+    <h2 class="g-rank" id="g-rank"></h2>
+    <p class="g-total"><b id="g-total">0</b> <span id="g-outof">out of 300</span></p>
+    <p class="g-newbest" id="g-newbest" data-t="newBest" hidden>New best score!</p>
+    <p class="g-insight" id="g-insight"></p>
+    <ul class="g-sum" id="g-sum"></ul>
+    <p class="g-tagline" data-t="tagline">Where you start. Where DeltaUp takes you. Measured.</p>
+    <div class="g-actions">
+      <button type="button" class="g-btn" id="g-cta" data-t="cta">Find your Δ · Free audit</button>
+      <button type="button" class="g-btn g-btn-ghost" id="g-again" data-t="again">Play again</button>
+    </div>
+  </div>
+</div></section>
+<section class="slide navy" id="s17" aria-roledescription="slide" aria-label="17 / 17" hidden><div class="sl sl-en" lang="en"><svg class="logo logo-md" viewBox="0 0 538 160" role="img" aria-label="DeltaUp"><use href="#du-logo"></use></svg>
     <h2 class="c-h">Start with a free Bottleneck Audit.</h2>
     <p class="lead">Tell us which process feels slow. We measure it, and you decide with the numbers in front of you.</p>
     <div class="cgrid">
@@ -654,7 +860,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
   <span class="hint">tap · swipe · ← →</span>
   <span class="sp"></span>
   <button type="button" id="prev" aria-label="Previous slide">‹</button>
-  <span class="count" id="count" aria-live="polite">1 / 16</span>
+  <span class="count" id="count" aria-live="polite">1 / 17</span>
   <button type="button" id="next" class="go" aria-label="Next slide">›</button>
   <button type="button" id="lang">فا</button>
   <button type="button" id="full" aria-label="Full screen">⤢</button>
@@ -669,7 +875,8 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
   function num(x) { return root.classList.contains("fa") ? String(x).replace(/[0-9]/g, function (d) { return FA[d]; }) : String(x); }
   function show(i, animate) {
     i = Math.max(0, Math.min(n - 1, i));
-    slides[cur].hidden = true; slides[cur].classList.remove("enter");
+    var prev = slides[cur];
+    prev.hidden = true; prev.classList.remove("enter");
     cur = i;
     var s = slides[cur];
     s.hidden = false; s.scrollTop = 0;
@@ -678,6 +885,10 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
     $("bar").style.width = ((cur + 1) / n * 100) + "%";
     $("prev").disabled = cur === 0; $("next").disabled = cur === n - 1;
     try { history.replaceState(null, "", "#s" + (cur + 1)); } catch (e) {}
+    if (window.DeltaGame) {
+      if (prev !== s && prev.classList.contains("game")) window.DeltaGame.onLeave();
+      if (s.classList.contains("game")) window.DeltaGame.onEnter();
+    }
   }
   function setLang(l) {
     root.classList.toggle("fa", l === "fa");
@@ -686,6 +897,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
     $("lang").setAttribute("aria-label", l === "fa" ? "Switch to English" : "تغییر به فارسی");
     document.title = l === "fa" ? "دلتا آپ · ارائه" : "DeltaUp · Presentation";
     try { localStorage.setItem("deltaup-deck-lang", l); } catch (e) {}
+    if (window.DeltaGame) window.DeltaGame.setLang(l);
     show(cur, false);
   }
   $("prev").addEventListener("click", function () { show(cur - 1, true); });
@@ -709,6 +921,8 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
   if (standalone || /[?&]nostart/.test(location.search)) $("start").hidden = true;
   document.addEventListener("keydown", function (e) {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var inGame = e.target && e.target.closest && e.target.closest("[data-game]");
+    if (inGame && ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " ", "Enter"].indexOf(e.key) >= 0) return;
     var k = e.key, rtl = root.classList.contains("fa");
     if (k === "ArrowRight") { show(cur + (rtl ? -1 : 1), true); e.preventDefault(); }
     else if (k === "ArrowLeft") { show(cur + (rtl ? 1 : -1), true); e.preventDefault(); }
@@ -724,6 +938,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
   var INTERACTIVE = "a,button,input,select,textarea,label,[data-no-advance]";
   function rtl() { return root.classList.contains("fa"); }
   deck.addEventListener("touchstart", function (e) {
+    if (e.target.closest && e.target.closest("[data-no-swipe]")) { x0 = null; return; }
     if (e.touches.length !== 1) { x0 = null; return; }
     x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; t0 = Date.now();
   }, { passive: true });
@@ -737,6 +952,7 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
     show(cur + ((rtl() ? dx > 0 : dx < 0) ? 1 : -1), true);
   }, { passive: true });
   deck.addEventListener("click", function (e) {
+    if (slides[cur].classList.contains("game")) return;
     if (Date.now() - lastSwipe < 500) return;
     if (e.target.closest && e.target.closest(INTERACTIVE)) return;
     var sel = window.getSelection && window.getSelection();
@@ -751,7 +967,434 @@ html.fa .phead{letter-spacing:0;text-transform:none;font-size:.8rem}
   try { lang = localStorage.getItem("deltaup-deck-lang") || "en"; } catch (e) {}
   if (/[?&]lang=fa/.test(location.search)) lang = "fa";
   setLang(lang);
-  window.DeltaDeck = { show: show, setLang: setLang };
+  window.DeltaDeck = { show: show, setLang: setLang, count: n };
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var game = document.getElementById("game");
+  if (!game) return;
+  var slide = game.closest(".slide");
+  var root = document.documentElement;
+  var RM = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var XLINK = "http://www.w3.org/1999/xlink";
+  var IDLE_MS = 45000;
+
+  var T = {
+    en: {
+      kicker: "Mini-game · 30 seconds",
+      title: "Guess the Δ",
+      introSub: "3 real projects. Drag the blue bar to where you think DeltaUp takes them.",
+      play: "Play",
+      best: "Best score: {n}",
+      note: "Example figures from the DeltaUp cases.",
+      round: "Project {i} of 3",
+      score: "Score",
+      today: "Today",
+      withDU: "With DeltaUp",
+      dragHint: "Drag up",
+      btnDrag: "Drag the blue bar ↑",
+      btnReveal: "Reveal the Δ",
+      btnNext: "Next project →",
+      btnFinal: "See my score",
+      yourGuess: "Your guess",
+      bullseye: "Bullseye!",
+      close: "So close!",
+      under: "Bigger than you thought!",
+      over: "Ambitious! The real Δ is smaller.",
+      finalKicker: "Your result",
+      outOf: "out of 300",
+      newBest: "New best score!",
+      insUnder: "You guessed {p}% of the real Δ. The real improvement was bigger.",
+      insOver: "You guessed {p}% of the real Δ. We measure before we promise.",
+      insRight: "You guessed {p}% of the real Δ. You think like DeltaUp.",
+      tagline: "Where you start. Where DeltaUp takes you. Measured.",
+      cta: "Find your Δ · Free audit",
+      again: "Play again",
+      sliderLabel: "Your guess for {area}",
+      ranks: ["Delta Rookie", "Delta Analyst", "Delta Pro", "Delta Master"]
+    },
+    fa: {
+      kicker: "بازی کوتاه · ۳۰ ثانیه",
+      title: "Δ را حدس بزن",
+      introSub: "۳ پروژهٔ واقعی. میلهٔ آبی را تا جایی بکشید که فکر می‌کنید دلتا آپ می‌رساند.",
+      play: "شروع بازی",
+      best: "بهترین امتیاز: {n}",
+      note: "اعداد نمونه از پرونده‌های دلتا آپ.",
+      round: "پروژهٔ {i} از ۳",
+      score: "امتیاز",
+      today: "امروز",
+      withDU: "با دلتا آپ",
+      dragHint: "بکشید بالا",
+      btnDrag: "میلهٔ آبی را بالا بکشید ↑",
+      btnReveal: "نمایش Δ واقعی",
+      btnNext: "پروژهٔ بعد ←",
+      btnFinal: "دیدن امتیاز من",
+      yourGuess: "حدس شما",
+      bullseye: "دقیقاً درست!",
+      close: "خیلی نزدیک!",
+      under: "بزرگ‌تر از حدس شما!",
+      over: "بلندپروازانه! Δ واقعی کوچک‌تر است.",
+      finalKicker: "نتیجهٔ شما",
+      outOf: "از ۳۰۰",
+      newBest: "رکورد تازه!",
+      insUnder: "شما {p}٪ از Δ واقعی را حدس زدید. بهبود واقعی بزرگ‌تر بود.",
+      insOver: "شما {p}٪ از Δ واقعی را حدس زدید. ما پیش از قول دادن، اندازه می‌گیریم.",
+      insRight: "شما {p}٪ از Δ واقعی را حدس زدید. مثل دلتا آپ فکر می‌کنید.",
+      tagline: "از کجا شروع می‌کنید. دلتا آپ شما را کجا می‌برد. اندازه‌گیری‌شده.",
+      cta: "Δ خودتان را پیدا کنید · ممیزی رایگان",
+      again: "بازی دوباره",
+      sliderLabel: "حدس شما برای {area}",
+      ranks: ["تازه‌کار دلتا", "تحلیلگر دلتا", "حرفه‌ای دلتا", "استاد دلتا"]
+    }
+  };
+
+  var ROUNDS = [
+    { id: "hr", icon: "ic-hr", today: 10, actual: 200, max: 250, step: 5,
+      en: { area: "Resume screening", unit: "resumes per operator-hour",
+            q: "Today one operator handles 10 resumes an hour. How many with DeltaUp?",
+            delta: "20× more per hour", short: "20×",
+            fact: "The tool reads and files each resume. The operator only checks it." },
+      fa: { area: "غربالگری رزومه", unit: "رزومه در هر ساعت اپراتور",
+            q: "امروز هر اپراتور ساعتی ۱۰ رزومه را پردازش می‌کند. با دلتا آپ چندتا؟",
+            delta: "۲۰ برابر بیشتر در ساعت", short: "۲۰×",
+            fact: "ابزار هر رزومه را می‌خواند و ثبت می‌کند؛ اپراتور فقط بررسی می‌کند." } },
+    { id: "prod", icon: "ic-prod", today: 0, actual: 9, max: 12, step: 1,
+      en: { area: "Production line", unit: "days of warning before a breakdown",
+            q: "Today a machine breaks with no warning: 0 days. How much warning with DeltaUp?",
+            delta: "+9 days of warning", short: "+9 days",
+            fact: "Sensors spot unusual vibration early, so a breakdown becomes a planned stop." },
+      fa: { area: "خط تولید", unit: "روز هشدار پیش از خرابی",
+            q: "امروز دستگاه بدون هشدار خراب می‌شود: ۰ روز. با دلتا آپ چند روز هشدار؟",
+            delta: "۹ روز هشدار پیش از خرابی", short: "۹+ روز",
+            fact: "حسگرها لرزش غیرعادی را زود تشخیص می‌دهند و خرابی به توقف برنامه‌ریزی‌شده تبدیل می‌شود." } },
+    { id: "lead", icon: "p-lead", today: 6, actual: 30, max: 40, step: 1,
+      en: { area: "Lead generation", unit: "qualified leads per rep per day",
+            q: "Today a sales rep finds 6 qualified leads a day. How many with DeltaUp?",
+            delta: "5× more leads", short: "5×",
+            fact: "Lead Finder does the research, so reps spend their day selling." },
+      fa: { area: "جذب سرنخ فروش", unit: "سرنخ واجد شرایط برای هر فروشنده در روز",
+            q: "امروز هر فروشنده روزانه ۶ سرنخ واجد شرایط پیدا می‌کند. با دلتا آپ چندتا؟",
+            delta: "۵ برابر سرنخ بیشتر", short: "۵×",
+            fact: "Lead Finder جست‌وجو را انجام می‌دهد تا فروشنده‌ها روزشان را صرف فروش کنند." } }
+  ];
+
+  var S = { state: "intro", r: 0, guess: 0, guesses: [], score: 0, best: 0,
+            lastInput: Date.now(), timers: [], pointerId: null, gen: 0, final: null };
+  try { S.best = parseInt(localStorage.getItem("deltaup-game-best"), 10) || 0; } catch (e) {}
+
+  function $(id) { return document.getElementById(id); }
+  function lang() { return root.classList.contains("fa") ? "fa" : "en"; }
+  function t(key, vars) {
+    var s = T[lang()][key];
+    if (vars) Object.keys(vars).forEach(function (k) { s = s.split("{" + k + "}").join(vars[k]); });
+    return s;
+  }
+  function fmt(n) { return Math.round(n).toLocaleString(lang() === "fa" ? "fa-IR" : "en-US"); }
+  function later(fn, ms) { S.timers.push(setTimeout(fn, RM ? 0 : ms)); }
+  function clearTimers() { S.timers.forEach(clearTimeout); S.timers = []; }
+  function pct(r, v) { return (v / r.max * 100).toFixed(3) + "%"; }
+  function touch() { S.lastInput = Date.now(); }
+  function showScreen(id) { ["g-intro", "g-round", "g-final"].forEach(function (x) { $(x).hidden = x !== id; }); }
+  function mk(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function deltaChip(text, cls) {
+    var c = mk("span", cls);
+    c.appendChild(mk("bdi", null, "Δ"));
+    c.appendChild(document.createTextNode(" " + text));
+    return c;
+  }
+  function vibrate(p) { try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) {} }
+  function tween(from, to, ms, cb) {
+    var gen = S.gen, t0 = null;
+    if (RM || ms <= 0) { cb(to); return; }
+    function step(now) {
+      if (gen !== S.gen) return;
+      if (t0 === null) t0 = now;
+      var k = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - k, 3);
+      cb(from + (to - from) * e);
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function accuracy(r, g) { return Math.max(0, 1 - Math.abs(g - r.actual) / (r.actual - r.today)); }
+  function verdictKey(r, g) {
+    var a = accuracy(r, g);
+    return a >= 0.9 ? "bullseye" : a >= 0.7 ? "close" : (g < r.actual ? "under" : "over");
+  }
+
+  /* ---------- rendering ---------- */
+  function renderStatic() {
+    game.setAttribute("dir", lang() === "fa" ? "rtl" : "ltr");
+    Array.prototype.forEach.call(game.querySelectorAll("[data-t]"), function (n) {
+      n.textContent = t(n.getAttribute("data-t"));
+    });
+    var b = $("g-best");
+    b.hidden = !S.best;
+    if (S.best) b.textContent = t("best", { n: fmt(S.best) });
+  }
+  function paintGuess() {
+    var r = ROUNDS[S.r], stage = $("g-stage");
+    $("g-col-a").style.setProperty("--h", pct(r, S.guess));
+    $("g-val-a").textContent = fmt(S.guess);
+    stage.setAttribute("aria-valuenow", S.guess);
+    stage.setAttribute("aria-valuetext", fmt(S.guess) + " " + r[lang()].unit);
+  }
+  function setGuess(v) {
+    var r = ROUNDS[S.r];
+    S.guess = Math.max(r.today, Math.min(r.max, Math.round(v / r.step) * r.step));
+    paintGuess();
+  }
+  function updateButton() {
+    var b = $("g-main"), last = S.r === ROUNDS.length - 1;
+    if (S.state === "ready" || S.state === "dragging") { b.textContent = t("btnDrag"); b.disabled = true; }
+    else if (S.state === "guessed") { b.textContent = t("btnReveal"); b.disabled = false; }
+    else if (S.state === "revealing") { b.textContent = t("btnReveal"); b.disabled = true; }
+    else if (S.state === "revealed") { b.textContent = last ? t("btnFinal") : t("btnNext"); b.disabled = false; }
+  }
+  function renderFeedback(animate) {
+    var r = ROUNDS[S.r], L = lang(), g = S.guesses[S.r], f = $("g-feedback");
+    f.textContent = "";
+    f.appendChild(mk("p", "g-verdict", t(verdictKey(r, g))));
+    f.appendChild(deltaChip(r[L].delta, "g-chip"));
+    f.appendChild(mk("p", "g-fact", r[L].fact));
+    f.classList.remove("pop");
+    if (animate && !RM) { void f.offsetWidth; f.classList.add("pop"); }
+  }
+  function renderRound() {
+    var r = ROUNDS[S.r], L = lang(), stage = $("g-stage");
+    $("g-roundlabel").textContent = t("round", { i: fmt(S.r + 1) });
+    $("g-score").textContent = fmt(S.score);
+    Array.prototype.forEach.call($("g-dots").children, function (d, i) {
+      d.className = i < S.r ? "done" : i === S.r ? "now" : "";
+    });
+    var use = $("g-ic-use");
+    use.setAttribute("href", "#" + r.icon);
+    use.setAttributeNS(XLINK, "xlink:href", "#" + r.icon);
+    $("g-area").textContent = r[L].area;
+    $("g-q").textContent = r[L].q;
+    $("g-unit").textContent = r[L].unit;
+    stage.setAttribute("aria-label", t("sliderLabel", { area: r[L].area }));
+    stage.setAttribute("aria-valuemin", r.today);
+    stage.setAttribute("aria-valuemax", r.max);
+    $("g-col-b").style.setProperty("--h", pct(r, r.today));
+    $("g-val-b").textContent = fmt(r.today);
+    if (S.state === "revealed") {
+      $("g-col-a").style.setProperty("--h", pct(r, r.actual));
+      $("g-val-a").textContent = fmt(r.actual);
+      $("g-ghost-lab").textContent = t("yourGuess") + " " + fmt(S.guesses[S.r]);
+      renderFeedback(false);
+    } else if (S.state !== "revealing") {
+      paintGuess();
+    }
+    updateButton();
+  }
+
+  /* ---------- flow ---------- */
+  function startRound() {
+    var r = ROUNDS[S.r], stage = $("g-stage"), rd = $("g-round");
+    clearTimers(); S.gen++;
+    S.state = "ready"; S.guess = r.today; S.pointerId = null;
+    $("g-feedback").textContent = ""; $("g-feedback").classList.remove("pop");
+    rd.classList.remove("is-revealed");
+    $("g-ghost").hidden = true; $("g-ghost-lab").hidden = true; $("g-hint").hidden = false;
+    $("g-burst").textContent = "";
+    stage.classList.remove("dragging"); stage.classList.add("g-instant");
+    showScreen("g-round");
+    renderRound();
+    void stage.offsetWidth;
+    stage.classList.remove("g-instant");
+    rd.classList.remove("enter"); void rd.offsetWidth; if (!RM) rd.classList.add("enter");
+    try { stage.focus({ preventScroll: true }); } catch (e) { stage.focus(); }
+  }
+  function play() { S.r = 0; S.score = 0; S.guesses = []; touch(); startRound(); }
+  function markGuessed() { S.state = "guessed"; $("g-hint").hidden = true; updateButton(); }
+
+  function floatPoints(p) {
+    if (RM) return;
+    var n = mk("span", "g-pts", "+" + fmt(p));
+    $("g-col-a").appendChild(n);
+    setTimeout(function () { if (n.parentNode) n.parentNode.removeChild(n); }, 1100);
+  }
+  var BURST = ["#C6F24E", "#FFFFFF", "#69A5FF"];
+  function burst() {
+    if (RM) return;
+    var box = $("g-burst");
+    box.textContent = "";
+    for (var i = 0; i < 14; i++) {
+      var p = mk("i"), ang = (-160 + Math.random() * 140) * Math.PI / 180, dist = 60 + Math.random() * 90;
+      p.style.setProperty("--x", Math.round(Math.cos(ang) * dist) + "px");
+      p.style.setProperty("--y", Math.round(Math.sin(ang) * dist) + "px");
+      p.style.setProperty("--r", Math.round(Math.random() * 360 - 180) + "deg");
+      p.style.background = BURST[i % 3];
+      p.style.animationDelay = Math.round(Math.random() * 80) + "ms";
+      box.appendChild(p);
+    }
+    setTimeout(function () { box.textContent = ""; }, 1200);
+  }
+
+  function reveal() {
+    if (S.state !== "guessed") return;
+    var r = ROUNDS[S.r], g = S.guess, a = accuracy(r, g), pts = Math.round(a * 100);
+    var stage = $("g-stage"), colA = $("g-col-a");
+    S.state = "revealing"; S.guesses[S.r] = g; touch(); updateButton();
+    colA.style.setProperty("--g", pct(r, g));
+    $("g-ghost").hidden = false;
+    $("g-ghost-lab").textContent = t("yourGuess") + " " + fmt(g);
+    $("g-ghost-lab").hidden = false;
+    stage.classList.add("g-instant");
+    colA.style.setProperty("--h", pct(r, r.today));
+    $("g-val-a").textContent = fmt(r.today);
+    void colA.offsetWidth;
+    stage.classList.remove("g-instant");
+    later(function () {
+      colA.style.setProperty("--h", pct(r, r.actual));
+      tween(r.today, r.actual, 800, function (v) { $("g-val-a").textContent = fmt(v); });
+    }, 30);
+    later(function () {
+      var before = S.score;
+      S.score += pts;
+      $("g-round").classList.add("is-revealed");
+      renderFeedback(true);
+      tween(before, S.score, 500, function (v) { $("g-score").textContent = fmt(v); });
+      floatPoints(pts);
+      if (a >= 0.7) burst();
+      if (a >= 0.9) vibrate([20, 40, 20]);
+    }, 1100);
+    later(function () {
+      S.state = "revealed"; updateButton();
+      try { $("g-main").focus({ preventScroll: true }); } catch (e) {}
+    }, 1400);
+  }
+
+  function next() {
+    if (S.state !== "revealed") return;
+    if (S.r >= ROUNDS.length - 1) showFinal(); else { S.r++; startRound(); }
+  }
+
+  function showFinal() {
+    clearTimers(); S.gen++;
+    var total = S.score, newBest = total > S.best, ratio = 0;
+    if (newBest) { S.best = total; try { localStorage.setItem("deltaup-game-best", String(total)); } catch (e) {} }
+    ROUNDS.forEach(function (r, i) { ratio += (S.guesses[i] - r.today) / (r.actual - r.today); });
+    S.final = { total: total, newBest: newBest,
+                rank: total >= 270 ? 3 : total >= 210 ? 2 : total >= 120 ? 1 : 0,
+                p: Math.round(ratio / ROUNDS.length * 100) };
+    S.state = "final";
+    showScreen("g-final");
+    renderFinal(true);
+  }
+  function renderFinal(animate) {
+    var F = S.final, L = lang(), list = $("g-sum");
+    $("g-rank").textContent = T[L].ranks[F.rank];
+    $("g-newbest").hidden = !F.newBest;
+    $("g-outof").textContent = t("outOf");
+    $("g-insight").textContent = t(F.p < 85 ? "insUnder" : F.p > 115 ? "insOver" : "insRight", { p: fmt(F.p) });
+    list.textContent = "";
+    ROUNDS.forEach(function (r) {
+      var li = mk("li"), mini = mk("span", "g-mini"), b = mk("i"), a = mk("i");
+      b.style.height = "max(3px, " + (r.today / r.actual * 100).toFixed(1) + "%)";
+      mini.appendChild(b); mini.appendChild(a);
+      li.appendChild(mini);
+      li.appendChild(mk("b", null, r[L].area));
+      li.appendChild(mk("span", null, fmt(r.today) + (L === "fa" ? " ← " : " → ") + fmt(r.actual)));
+      li.appendChild(deltaChip(r[L].short, "g-chipsm"));
+      list.appendChild(li);
+    });
+    if (animate) tween(0, F.total, 900, function (v) { $("g-total").textContent = fmt(v); });
+    else $("g-total").textContent = fmt(F.total);
+  }
+
+  function goIntro() {
+    clearTimers(); S.gen++;
+    S.state = "intro"; S.pointerId = null;
+    $("g-stage").classList.remove("dragging");
+    renderStatic();
+    showScreen("g-intro");
+  }
+
+  /* ---------- input ---------- */
+  var stage = $("g-stage");
+  function valueAt(y) {
+    var r = ROUNDS[S.r], rc = $("g-col-a").getBoundingClientRect();
+    return (rc.bottom - y) / rc.height * r.max;
+  }
+  stage.addEventListener("pointerdown", function (e) {
+    if (S.state !== "ready" && S.state !== "guessed") return;
+    if (S.pointerId !== null) return;
+    S.pointerId = e.pointerId; touch();
+    try { stage.setPointerCapture(e.pointerId); } catch (x) {}
+    S.state = "dragging"; stage.classList.add("dragging"); $("g-hint").hidden = true;
+    setGuess(valueAt(e.clientY)); updateButton();
+    e.preventDefault();
+  });
+  stage.addEventListener("pointermove", function (e) {
+    if (e.pointerId !== S.pointerId || S.state !== "dragging") return;
+    touch(); setGuess(valueAt(e.clientY));
+  });
+  function endDrag(e) {
+    if (e.pointerId !== S.pointerId) return;
+    S.pointerId = null; stage.classList.remove("dragging");
+    if (S.state === "dragging") markGuessed();
+  }
+  stage.addEventListener("pointerup", endDrag);
+  stage.addEventListener("pointercancel", endDrag);
+  stage.addEventListener("lostpointercapture", endDrag);
+  stage.addEventListener("keydown", function (e) {
+    if (S.state !== "ready" && S.state !== "guessed") return;
+    var r = ROUNDS[S.r], k = e.key, v = null;
+    if (k === "ArrowUp") v = S.guess + r.step;
+    else if (k === "ArrowDown") v = S.guess - r.step;
+    else if (k === "PageUp") v = S.guess + r.step * 5;
+    else if (k === "PageDown") v = S.guess - r.step * 5;
+    else if (k === "Home") v = r.today;
+    else if (k === "End") v = r.max;
+    else if (k === "Enter" && S.state === "guessed") { e.preventDefault(); reveal(); return; }
+    else return;
+    e.preventDefault(); touch(); setGuess(v); markGuessed();
+  });
+
+  $("g-intro").addEventListener("click", function () { if (S.state === "intro") play(); });
+  $("g-main").addEventListener("click", function () {
+    touch();
+    if (S.state === "guessed") reveal(); else if (S.state === "revealed") next();
+  });
+  $("g-again").addEventListener("click", play);
+  $("g-cta").addEventListener("click", function () {
+    var n = document.querySelectorAll(".slide").length;
+    if (window.DeltaDeck) window.DeltaDeck.show(n - 1, true);
+  });
+  game.addEventListener("pointerdown", touch, true);
+  game.addEventListener("keydown", touch, true);
+  setInterval(function () {
+    if (slide.hidden) return;
+    if (S.state === "intro" || S.state === "revealing" || S.state === "dragging") return;
+    if (Date.now() - S.lastInput > IDLE_MS) goIntro();
+  }, 5000);
+
+  /* ---------- API used by the deck ---------- */
+  window.DeltaGame = {
+    onEnter: function () { if (S.state !== "intro" && Date.now() - S.lastInput > IDLE_MS) goIntro(); },
+    onLeave: function () {
+      if (S.state === "dragging") { S.pointerId = null; stage.classList.remove("dragging"); markGuessed(); }
+    },
+    setLang: function () {
+      renderStatic();
+      if (S.state === "final") renderFinal(false);
+      else if (S.state !== "intro") renderRound();
+    },
+    debug: function () { return { state: S.state, r: S.r, score: S.score, guess: S.guess, best: S.best }; },
+    expireIdle: function () { S.lastInput = 0; }
+  };
+
+  renderStatic();
+  showScreen("g-intro");
+  if (!slide.hidden) window.DeltaGame.onEnter();
 })();
 </script>
 
