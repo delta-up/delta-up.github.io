@@ -11,9 +11,9 @@ export default {
     if (request.method !== 'POST' || !ORIGINS.includes(origin)) return new Response('Forbidden', { status: 403, headers: cors });
     let body;
     try { body = await request.json(); } catch { return new Response('Bad request', { status: 400, headers: cors }); }
-    const name = clip(body.name, 80), org = clip(body.org, 120), phone = clip(body.phone, 30), need = clip(body.need, 40), modules = clip(body.modules, 600), lang = clip(body.lang, 5);
+    const name = clip(body.name, 80), org = clip(body.org, 120), phone = clip(body.phone, 30), need = clip(body.need, 40), modules = clip(body.modules, 600), message = clip(body.message, 1000), lang = clip(body.lang, 5);
     if (!name || !org || phone.replace(/\D/g, '').length < 8 || clip(body.website, 1)) return new Response('Bad request', { status: 400, headers: cors });
-    const text = `🔔 درخواست جدید از سایت دلتا آپ\n👤 ${name}\n🏢 ${org}\n📞 ${phone}\n🎯 ${need}${modules ? `\n🧩 ${modules}` : ''}\n🌐 ${lang}`;
+    const text = `🔔 درخواست جدید از سایت دلتا آپ\n👤 ${name}\n🏢 ${org}\n📞 ${phone}\n🎯 ${need}${modules ? `\n🧩 ماژول‌ها: ${modules}` : ''}${message ? `\n💬 پیام: ${message}` : ''}\n🌐 ${lang}`;
     const r = await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: env.CHAT_ID, text }),
     });
