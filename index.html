@@ -204,7 +204,6 @@ body.present #qbar{display:none}
     <a href="#luna"><span class="fa">لونا</span><span class="en">Luna</span><span class="ar">Luna</span><span class="de">Luna</span><span class="fr">Luna</span></a>
     <a href="#how"><span class="fa">روش کار</span><span class="en">How we work</span><span class="de">So arbeiten wir</span><span class="fr">Notre méthode</span><span class="ar">طريقة العمل</span></a>
     <a href="#measure"><span class="fa">اندازه‌گیری Δ</span><span class="en">Measuring the Δ</span><span class="de">Das Δ messen</span><span class="fr">Mesurer le Δ</span><span class="ar">قياس Δ</span></a>
-    <a href="#cases"><span class="fa">نمونه‌کارها</span><span class="en">Case studies</span><span class="de">Fallstudien</span><span class="fr">Études de cas</span><span class="ar">دراسات حالة</span></a>
     <a href="#layers"><span class="fa">۹ لایه</span><span class="en">9 layers</span><span class="de">9 Ebenen</span><span class="fr">9 niveaux</span><span class="ar">٩ طبقات</span></a>
     <a href="#contact"><span class="fa">تماس</span><span class="en">Contact</span><span class="de">Kontakt</span><span class="fr">Contact</span><span class="ar">تواصل</span></a>
   </nav>
@@ -351,12 +350,6 @@ body.present #qbar{display:none}
   </div>
 </section>
 
-<section id="cases">
-  <div class="kicker"><span class="fa">نمونه‌کارها</span><span class="en">Case studies</span><span class="de">Fallstudien</span><span class="fr">Études de cas</span><span class="ar">دراسات حالة</span></div>
-  <h2><span class="fa">هر کارت، یک راهکار هوش مصنوعی و یک Δ</span><span class="en">Each card: one AI solution, one Δ</span><span class="de">Jede Karte: eine KI-Lösung, ein Δ</span><span class="fr">Chaque carte : une solution d’IA, un Δ</span><span class="ar">كل بطاقة: حل واحد بالذكاء الاصطناعي، وΔ واحد</span></h2>
-  <div class="grid g3" id="caseGrid" style="margin-top:24px"></div>
-  <p class="note"><span class="fa">اعداد این نمونه‌ها برای شرکت‌های فرضی و واقع‌گرایانه‌اند؛ گزارش‌های واقعی پروژه‌ها در جلسه ارائه می‌شود.</span><span class="en">Figures in these examples are for hypothetical, realistic companies; real project reports are shared in meetings.</span><span class="de">Die Zahlen in diesen Beispielen beziehen sich auf fiktive, realistische Unternehmen; echte Projektberichte zeigen wir im Gespräch.</span><span class="fr">Les chiffres de ces exemples concernent des entreprises fictives mais réalistes ; les rapports de projets réels sont présentés en rendez-vous.</span><span class="ar">أرقام هذه الأمثلة لشركات افتراضية واقعية؛ تُعرض تقارير المشاريع الحقيقية في الاجتماعات.</span></p>
-</section>
 
 <section id="layers">
   <div class="kicker"><span class="fa">Δ چطور ساخته می‌شود</span><span class="en">How the Δ is built</span><span class="de">Wie das Δ entsteht</span><span class="fr">Comment se construit le Δ</span><span class="ar">كيف يُبنى الـΔ</span></div>
@@ -426,7 +419,7 @@ var lang="fa";
 function num(n){var d=W[lang].dg;return d?String(n).replace(/\d/g,function(x){return d[x]}):String(n)}
 function render(){
  var w=W[lang];
- document.getElementById("caseGrid").innerHTML=CASES.map(function(c){var x=c[lang];return '<div class="card case"><div class="ar2">'+x[0]+'</div><h3>'+x[1]+'</h3><div class="ba"><div><small>'+w.b+'</small><b>'+x[3]+'</b></div><span class="arw">'+w.arw+'</span><div class="af"><small>'+w.a+'</small><b>'+x[4]+'</b></div></div><div class="note" style="margin-top:8px">'+x[2]+'</div><div class="cd">Δ '+x[5]+'</div></div>'}).join("");
+ var cg=document.getElementById("caseGrid");if(cg)cg.innerHTML=CASES.map(function(c){var x=c[lang];return '<div class="card case"><div class="ar2">'+x[0]+'</div><h3>'+x[1]+'</h3><div class="ba"><div><small>'+w.b+'</small><b>'+x[3]+'</b></div><span class="arw">'+w.arw+'</span><div class="af"><small>'+w.a+'</small><b>'+x[4]+'</b></div></div><div class="note" style="margin-top:8px">'+x[2]+'</div><div class="cd">Δ '+x[5]+'</div></div>'}).join("");
  document.getElementById("layList").innerHTML=LAYERS.map(function(l,i){var x=l[lang];return '<li data-i="'+i+'"><span class="k">'+num(i+1)+'</span><div><b>'+x[0]+'</b><span>'+x[1]+'</span></div></li>'}).join("");
  document.querySelectorAll("#layList li").forEach(function(li){li.onclick=function(){fill(+li.dataset.i+1)}});
  fill(9,true);
