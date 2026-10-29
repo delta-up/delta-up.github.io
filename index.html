@@ -196,8 +196,9 @@ body.present #qbar{display:none}
 .lead-form{display:grid;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:18px}
 .lf-title{font-weight:800;font-size:20px}
 .lf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.lead-form input[type=text],.lead-form input:not([type]),.lead-form input[type=tel]{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:inherit;font-size:16px}
-.lead-form input:focus{outline:2px solid var(--acc);border-color:transparent}
+.lead-form input[type=text],.lead-form input:not([type]),.lead-form input[type=tel],.lead-form textarea{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:inherit;font-size:16px}
+.lead-form textarea{resize:vertical;min-height:96px;line-height:1.8}
+.lead-form input:focus,.lead-form textarea:focus{outline:2px solid var(--acc);border-color:transparent}
 .lead-form input.bad{border-color:var(--warn)}
 .lf-chips{display:flex;flex-wrap:wrap;gap:8px}
 .lf-chips input{position:absolute;opacity:0;pointer-events:none}
@@ -547,6 +548,7 @@ html[data-theme=dark] .lw{--panel:#121a2c;--panel2:#0f1626;--line:rgba(255,255,2
       <div class="lf-title"><span class="fa">درخواست دمو در ۳۰ ثانیه</span><span class="en">Request a demo in 30 seconds</span><span class="ar">اطلب عرضاً في ٣٠ ثانية</span><span class="de">Demo in 30 Sekunden anfragen</span><span class="fr">Une démo en 30 secondes</span></div>
       <div class="lf-row"><input name="name" required autocomplete="name" placeholder="نام شما" data-ph="نام شما|Your name|اسمك|Ihr Name|Votre nom"><input name="org" required autocomplete="organization" placeholder="نام سازمان" data-ph="نام سازمان|Company|اسم المؤسسة|Unternehmen|Entreprise"></div>
       <input name="phone" required type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="0912 000 0000" data-ph="شماره تماس|Phone number|رقم الهاتف|Telefonnummer|Téléphone">
+        <textarea name="message" rows="3" maxlength="1000" data-ph="درخواست یا سؤالتان را بنویسید؛ مثلاً چه مشکلی دارید یا از لونا چه انتظاری دارید (اختیاری)|Tell us what you need, e.g. the problem to solve or what you expect from Luna (optional)|اكتب طلبك أو سؤالك، مثل المشكلة أو ما تتوقعه من Luna (اختياري)|Ihr Anliegen, z. B. das Problem oder was Sie von Luna erwarten (optional)|Votre demande, ex. le problème à résoudre ou vos attentes envers Luna (facultatif)"></textarea>
       <div class="lf-chips" role="radiogroup">
         <label><input type="radio" name="need" value="دموی لونا" checked><span><span class="fa">دموی لونا</span><span class="en">Luna demo</span><span class="ar">عرض Luna</span><span class="de">Luna-Demo</span><span class="fr">Démo Luna</span></span></label>
         <label><input type="radio" name="need" value="مشاوره رایگان"><span><span class="fa">مشاورهٔ رایگان</span><span class="en">Free consultation</span><span class="ar">استشارة مجانية</span><span class="de">Kostenlose Beratung</span><span class="fr">Conseil gratuit</span></span></label>
@@ -813,13 +815,13 @@ function ph(){f.querySelectorAll("[data-ph]").forEach(function(i){i.placeholder=
 var _sl=setLang;setLang=function(l){_sl(l);ph()};ph();
 function text(){var d=new FormData(f),ok=true;["name","org","phone"].forEach(function(k){var i=f.elements[k],v=(i.value||"").trim();i.classList.toggle("bad",!v||(k=="phone"&&v.replace(/\D/g,"").length<8));if(i.classList.contains("bad"))ok=false});
  if(!ok){f.querySelector(".bad").focus();return null}
- return "درخواست از سایت دلتا آپ\n👤 "+d.get("name")+"\n🏢 "+d.get("org")+"\n📞 "+d.get("phone")+"\n🎯 "+d.get("need")+(BLD&&BLD.summary()?"\n🧩 "+BLD.summary():"")}
+ return "درخواست از سایت دلتا آپ\n👤 "+d.get("name")+"\n🏢 "+d.get("org")+"\n📞 "+d.get("phone")+"\n🎯 "+d.get("need")+(BLD&&BLD.summary()?"\n🧩 "+BLD.summary():"")+((d.get("message")||"").trim()?"\n💬 "+d.get("message").trim():"")}
 var OKT={fa:["🎉 {n} عزیز، درخواست شما همین الان به دست ما رسید!","تیم دلتا آپ خیلی زود با شما تماس می‌گیرد تا دموی لونا را روی کار خودتان ببینید. از اعتمادتان ممنونیم 🙏"],en:["🎉 Thank you, {n}! Your request just reached us.","The DeltaUp team will call you very soon to show you Luna on your own work. Thanks for your trust 🙏"],ar:["🎉 شكراً {n}! وصلنا طلبك الآن.","سيتصل بك فريق دلتا آب قريباً جداً ليُريك Luna على عملك. شكراً لثقتك 🙏"],de:["🎉 Danke, {n}! Ihre Anfrage ist gerade bei uns angekommen.","Das DeltaUp-Team ruft Sie sehr bald an und zeigt Ihnen Luna mit Ihrer eigenen Arbeit. Danke für Ihr Vertrauen 🙏"],fr:["🎉 Merci, {n} ! Votre demande vient de nous parvenir.","L’équipe DeltaUp vous appelle très vite pour vous montrer Luna sur votre propre travail. Merci de votre confiance 🙏"]};
 function done(m){var p=document.getElementById("lf-msg");p.hidden=false;p.textContent=m}
 function wa(t){window.open("https://wa.me/989306952808?text="+encodeURIComponent(t),"_blank");done(lang=="fa"?"واتس‌اپ باز شد؛ فقط دکمهٔ ارسال را بزنید ✓":"WhatsApp opened, just tap send ✓")}
 f.onsubmit=function(e){e.preventDefault();var t=text();if(!t)return;if(!LEAD_ENDPOINT)return wa(t);
  var d=new FormData(f),b=f.querySelector(".lf-send");b.disabled=true;
- fetch(LEAD_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:d.get("name"),org:d.get("org"),phone:d.get("phone"),need:d.get("need"),modules:BLD?BLD.summary():"",lang:lang,website:d.get("website")})})
+ fetch(LEAD_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:d.get("name"),org:d.get("org"),phone:d.get("phone"),need:d.get("need"),modules:BLD?BLD.summary():"",message:d.get("message"),lang:lang,website:d.get("website")})})
  .then(function(r){if(!r.ok)throw 0;var nm=(d.get("name")||"").trim();f.reset();f.classList.add("sent");var m=document.getElementById("lf-msg");m.hidden=false;m.className="lf-msg lf-ok";m.innerHTML="<b>"+OKT[lang][0].replace("{n}",nm.replace(/[<>&]/g,""))+"</b><span>"+OKT[lang][1]+"</span>";m.scrollIntoView({block:"center",behavior:"smooth"})})
  .catch(function(){var m=document.getElementById("lf-msg");m.hidden=false;m.innerHTML="";var l=document.createElement("a");l.className="lf-send";l.style.textDecoration="none";l.target="_blank";l.rel="noopener";l.href="https://wa.me/989306952808?text="+encodeURIComponent(t);l.textContent=lang=="fa"?"ارسال درخواست از واتس‌اپ ←":"Send via WhatsApp →";m.appendChild(l)}).then(function(){b.disabled=false})};})();
 </script>
