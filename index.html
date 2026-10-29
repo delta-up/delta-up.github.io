@@ -126,6 +126,72 @@ body.present section.hero.cur{display:grid!important;min-height:100vh}
 body.present #pbar{display:flex;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:50;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:30px;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.25);direction:ltr}
 #pbar button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:20px;width:38px;height:34px;cursor:pointer;font-size:16px}
 #pbar .dots{display:flex;gap:6px}#pbar .dots i{width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer}#pbar .dots i.on{background:var(--acc2);width:22px;border-radius:5px}
+/* Luna */
+.newpill{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:7px 14px;border-radius:30px;border:1px solid var(--line);background:var(--panel);color:var(--text);text-decoration:none;font-size:14.5px;font-weight:700}
+.newpill b{background:var(--gold);color:#1a1205;border-radius:20px;padding:1px 9px;font-size:12px}
+.newpill:hover{border-color:var(--acc)}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.door{display:block;text-decoration:none;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.door:hover{transform:translateY(-3px);border-color:var(--acc)}
+.door .who{font-size:13px;font-weight:800;letter-spacing:.3px;color:var(--mute)}
+.door h3{font-size:clamp(22px,2.6vw,30px);margin:8px 0 8px;line-height:1.35}
+.door p{margin:0;color:var(--mute)}
+.door .go{display:inline-block;margin-top:16px;font-weight:800;color:var(--acc)}
+.door.money{background:linear-gradient(160deg,rgba(245,200,106,.16),var(--panel) 60%)}
+.door.money h3 .d{color:var(--gold)}
+.door.sales{background:linear-gradient(160deg,rgba(46,230,166,.13),var(--panel) 60%)}
+.ltext{display:grid;grid-template-columns:1.25fr .75fr;gap:12px 40px;align-items:end}
+.ltext .lead{margin-bottom:0}
+.ltext ul.chk{margin:0}
+.lvid{margin:26px auto 0;max-width:1040px;cursor:zoom-in;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0b0a1a;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.lvid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+#sales .lvid video{aspect-ratio:8/5;background:#f8fafc}
+.lsnd{position:absolute;bottom:12px;inset-inline-end:12px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(4,8,20,.72);color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(6px)}
+.ltag{position:absolute;top:10px;inset-inline-start:10px;background:rgba(4,8,20,.72);color:#fff;font-size:12px;font-weight:700;border-radius:20px;padding:3px 10px;backdrop-filter:blur(6px)}
+.lgal{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.lshot{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:zoom-in;transition:transform .2s,border-color .2s}
+.lshot:hover,.lshot:focus{transform:translateY(-2px);border-color:var(--acc);outline:none}
+.lshot img{display:block;width:100%;height:220px;object-fit:cover;object-position:top}
+.lshot img[src$="crm-panel.webp"]{object-position:center 58%}
+.lshot figcaption{padding:12px 16px;font-weight:700;font-size:15px}
+.lshot small{display:block;color:var(--mute);font-weight:400;font-size:12px;margin-top:2px}
+.money-k{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);margin-inline-end:8px;vertical-align:middle}
+@media(max-width:900px){.doors,.ltext,.lgal{grid-template-columns:1fr}.lshot img{height:auto;max-height:300px}}
+/* leak calculator */
+.leak{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch;margin-top:24px}
+.leak .pane{display:grid;gap:14px}
+.leak label{display:grid;grid-template-columns:1fr 130px;gap:12px;align-items:center;font-size:15px;color:var(--mute)}
+.leak input{width:100%;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:17px;font-weight:800;text-align:center;font-family:inherit}
+.leak input:focus{outline:2px solid var(--acc);border-color:transparent}
+.leak .res{display:flex;flex-direction:column;justify-content:center;text-align:center;background:linear-gradient(135deg,rgba(255,122,107,.16),rgba(245,200,106,.12));border:1px solid var(--line);border-radius:18px;padding:28px}
+.leak .res .big{font-size:clamp(40px,6vw,64px);font-weight:800;line-height:1.2;color:var(--warn);padding:0}
+.leak .res .unit{font-weight:800;font-size:18px}
+.leak .res .f{color:var(--mute);font-size:14px;margin-top:10px;direction:ltr;unicode-bidi:isolate}
+@media(max-width:900px){.leak{grid-template-columns:1fr}.leak label{grid-template-columns:1fr 110px}}
+/* lightbox */
+#lbox{position:fixed;inset:0;z-index:60;display:none;place-items:center;background:rgba(3,6,14,.86);padding:18px;cursor:zoom-out}
+#lbox.on{display:grid}
+#lbox img{max-width:min(1400px,100%);max-height:92vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+/* contact */
+.nsteps{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px}
+.nsteps li{display:flex;gap:10px;align-items:center;color:var(--text);font-weight:700}
+.nsteps li i{font-style:normal;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--acc2);color:#04121f;font-size:13px;font-weight:800;flex:none}
+.contact{grid-template-columns:1fr}
+.cinfo{grid-template-columns:repeat(4,1fr)}
+.cinfo bdi{white-space:nowrap}
+.cinfo a{font-size:16px;padding:12px 14px}
+.cinfo a.wide{grid-column:span 2}
+@media(max-width:1000px){.cinfo{grid-template-columns:1fr 1fr}}
+.cinfo a.wa{border-color:rgba(37,211,102,.55)}
+.cinfo a.tg{border-color:rgba(42,171,238,.55)}
+@media(max-width:640px){.cinfo{grid-template-columns:1fr}.cinfo a.wide{grid-column:auto}.cinfo bdi{white-space:normal}}
+/* mobile quick bar */
+#qbar{display:none}
+@media(max-width:760px){#qbar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:fixed;inset-inline:10px;bottom:10px;z-index:40;padding:8px;border-radius:18px;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+#qbar a{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;padding:11px 6px;text-decoration:none;font-weight:800;font-size:14px;color:#fff}
+#qbar .wa{background:#1fae54}#qbar .tg{background:#229ed9}#qbar .ph{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
+body{padding-bottom:84px}body.present{padding-bottom:0}}
+body.present #qbar{display:none}
 @media print{header.top,#pbar{display:none!important}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}section{break-inside:avoid}}
 </style>
 </head>
@@ -135,6 +201,7 @@ body.present #pbar{display:flex;position:fixed;bottom:18px;left:50%;transform:tr
 <header class="top">
   <a href="#top" aria-label="DeltaUp"><svg class="logo" viewBox="0 0 538 160"><use href="#du-logo"/></svg></a>
   <nav>
+    <a href="#luna"><span class="fa">لونا</span><span class="en">Luna</span><span class="ar">Luna</span><span class="de">Luna</span><span class="fr">Luna</span></a>
     <a href="#how"><span class="fa">روش کار</span><span class="en">How we work</span><span class="de">So arbeiten wir</span><span class="fr">Notre méthode</span><span class="ar">طريقة العمل</span></a>
     <a href="#measure"><span class="fa">اندازه‌گیری Δ</span><span class="en">Measuring the Δ</span><span class="de">Das Δ messen</span><span class="fr">Mesurer le Δ</span><span class="ar">قياس Δ</span></a>
     <a href="#cases"><span class="fa">نمونه‌کارها</span><span class="en">Case studies</span><span class="de">Fallstudien</span><span class="fr">Études de cas</span><span class="ar">دراسات حالة</span></a>
@@ -154,6 +221,7 @@ body.present #pbar{display:flex;position:fixed;bottom:18px;left:50%;transform:tr
     <h1><span class="fa">۲۸۳ راهکار هوش مصنوعی.<br>هرکدام با یک <span class="d">Δ</span> واقعی.</span><span class="en">283 AI solutions.<br>Each one with a real <span class="d">Δ</span>.</span><span class="de">283 KI-Lösungen.<br>Jede mit einem echten <span class="d">Δ</span>.</span><span class="fr">283 solutions d’IA.<br>Chacune avec un <span class="d">Δ</span> réel.</span><span class="ar">٢٨٣ حلاً بالذكاء الاصطناعي.<br>لكلٍّ منها <span class="d">Δ</span> حقيقي.</span></h1>
     <p class="lead"><span class="fa">ما هوش مصنوعی نمی‌فروشیم؛ <b>Δ</b> می‌فروشیم: فاصلهٔ «قبل» و «بعد» در سرعت، هزینه و بهره‌وری سازمان شما. پیدا می‌کنیم کار کجا گیر کرده، راهکار را می‌سازیم و نتیجه را با عدد نشانتان می‌دهیم.</span><span class="en">We don't sell AI. We sell the <b>Δ</b>: the gap between before and after in your speed, cost and productivity. We find where work gets stuck, build the fix, and show you the result in numbers.</span><span class="de">Wir verkaufen keine KI. Wir verkaufen das <b>Δ</b>: den Unterschied zwischen Vorher und Nachher bei Ihrer Geschwindigkeit, Ihren Kosten und Ihrer Produktivität. Wir finden, wo die Arbeit stockt, bauen die Lösung und zeigen Ihnen das Ergebnis in Zahlen.</span><span class="fr">Nous ne vendons pas de l’IA. Nous vendons le <b>Δ</b> : l’écart entre l’avant et l’après en vitesse, en coûts et en productivité. Nous trouvons où le travail bloque, construisons la solution et vous montrons le résultat en chiffres.</span><span class="ar">نحن لا نبيع الذكاء الاصطناعي؛ نبيع الـ<b>Δ</b>: الفرق بين «قبل» و«بعد» في سرعة مؤسستك وتكلفتها وإنتاجيتها. نكتشف أين يتعطّل العمل، ونبني الحل، ونُريك النتيجة بالأرقام.</span></p>
     <div><a class="btn" href="#contact"><span class="fa">نیازسنجی رایگان ←</span><span class="en">Free needs assessment →</span><span class="de">Kostenlose Bedarfsanalyse →</span><span class="fr">Analyse des besoins gratuite →</span><span class="ar">تقييم احتياجات مجاني ←</span></a><button class="btn ghost" onclick="present(0)">▶ <span class="fa">مشاهدهٔ ارائه</span><span class="en">Watch the presentation</span><span class="de">Präsentation ansehen</span><span class="fr">Voir la présentation</span><span class="ar">شاهد العرض</span></button></div>
+    <a class="newpill" href="#luna"><b><span class="fa">تازه</span><span class="en">New</span><span class="ar">جديد</span><span class="de">Neu</span><span class="fr">Nouveau</span></b><span class="fa">لونا: هر جواب به تومان، و CRM که خودش پر می‌شود ←</span><span class="en">Luna: answers in money, and a CRM that fills itself →</span><span class="ar">Luna: إجابات بالمال، ونظام CRM يملأ نفسه ←</span><span class="de">Luna: Antworten in Geld und ein CRM, das sich selbst füllt →</span><span class="fr">Luna : des réponses en argent, et un CRM qui se remplit tout seul →</span></a>
   </div>
   <div class="card big">
     <div class="n"><span class="fa">۲۸۳</span><span class="en">283</span><span class="de">283</span><span class="fr">283</span><span class="ar">٢٨٣</span></div>
@@ -161,6 +229,82 @@ body.present #pbar{display:flex;position:fixed;bottom:18px;left:50%;transform:tr
     <div class="bars"><i class="g"></i><i class="bl"></i></div>
     <div class="blab"><span><span class="fa">قبل</span><span class="en">Before</span><span class="de">Vorher</span><span class="fr">Avant</span><span class="ar">قبل</span></span><span><span class="fa">بعد</span><span class="en">After</span><span class="de">Nachher</span><span class="fr">Après</span><span class="ar">بعد</span></span></div>
     <p class="sub" style="margin-top:10px"><span class="fa">هر پروژه یک سؤال دارد: چقدر بهتر شد؟</span><span class="en">Every project answers one question: how much better did it get?</span><span class="de">Jedes Projekt beantwortet eine Frage: Wie viel besser ist es geworden?</span><span class="fr">Chaque projet répond à une question : à quel point est-ce mieux ?</span><span class="ar">كل مشروع يجيب عن سؤال واحد: كم تحسّن الأداء؟</span></p>
+  </div>
+</section>
+
+<section id="luna">
+  <div class="kicker"><span class="fa">لونا · محصول دلتا آپ</span><span class="en">Luna · by DeltaUp</span><span class="ar">Luna · من دلتا آب</span><span class="de">Luna · von DeltaUp</span><span class="fr">Luna · par DeltaUp</span></div>
+  <h2><span class="fa">دو لایه، یک هدف: <span class="d">سود بیشتر</span></span><span class="en">Two layers, one goal: <span class="d">more profit</span></span><span class="ar">طبقتان وهدف واحد: <span class="d">ربح أكبر</span></span><span class="de">Zwei Ebenen, ein Ziel: <span class="d">mehr Gewinn</span></span><span class="fr">Deux niveaux, un seul but : <span class="d">plus de profit</span></span></h2>
+  <p class="lead"><span class="fa">لونا مغز سازمان شماست: هدف‌ها، پروژه‌ها، مشتریان و تصمیم‌ها را به هم وصل می‌کند و جواب را به زبان پول می‌دهد.</span><span class="en">Luna is your company's brain. It connects goals, projects, customers and decisions, and answers in the language of money.</span><span class="ar">Luna هو عقل مؤسستك: يربط الأهداف والمشاريع والعملاء والقرارات، ويجيب بلغة المال.</span><span class="de">Luna ist das Gehirn Ihres Unternehmens: Es verbindet Ziele, Projekte, Kunden und Entscheidungen und antwortet in der Sprache des Geldes.</span><span class="fr">Luna est le cerveau de votre entreprise : il relie objectifs, projets, clients et décisions, et répond dans la langue de l’argent.</span></p>
+  <div class="doors">
+    <a class="door money" href="#profit"><div class="who">💰 <span class="fa">برای مدیرعامل</span><span class="en">For the CEO</span><span class="ar">للرئيس التنفيذي</span><span class="de">Für die Geschäftsführung</span><span class="fr">Pour le dirigeant</span></div>
+      <h3><span class="fa">هر تصمیم، <span class="d">به تومان</span></span><span class="en">Every decision, <span class="d">in money</span></span><span class="ar">كل قرار، <span class="d">بالمال</span></span><span class="de">Jede Entscheidung <span class="d">in Geld</span></span><span class="fr">Chaque décision, <span class="d">en argent</span></span></h3>
+      <p><span class="fa">بپرسید پول را کجا خرج کنید. لونا گلوگاه را پیدا می‌کند و هر گزینه را قیمت می‌گذارد.</span><span class="en">Ask where to spend. Luna finds the bottleneck and puts a price on every option.</span><span class="ar">اسأل أين تُنفق. يجد Luna عنق الزجاجة ويضع سعراً لكل خيار.</span><span class="de">Fragen Sie, wo Sie investieren sollen. Luna findet den Engpass und beziffert jede Option.</span><span class="fr">Demandez où investir. Luna trouve le goulot d’étranglement et chiffre chaque option.</span></p>
+      <span class="go"><span class="fa">ببینید ←</span><span class="en">See it →</span><span class="ar">شاهد ←</span><span class="de">Ansehen →</span><span class="fr">Voir →</span></span></a>
+    <a class="door sales" href="#sales"><div class="who">📈 <span class="fa">برای تیم فروش</span><span class="en">For the sales team</span><span class="ar">لفريق المبيعات</span><span class="de">Für den Vertrieb</span><span class="fr">Pour l’équipe commerciale</span></div>
+      <h3><span class="fa">CRM که <span class="d">خودش پر می‌شود</span></span><span class="en">A CRM that <span class="d">fills itself</span></span><span class="ar">CRM <span class="d">يملأ نفسه</span></span><span class="de">Ein CRM, das <span class="d">sich selbst füllt</span></span><span class="fr">Un CRM qui <span class="d">se remplit tout seul</span></span></h3>
+      <p><span class="fa">واتس‌اپ، تلگرام، سایت و اینستاگرام خودشان وارد می‌شوند. شما فقط می‌بینید امروز به چه کسی زنگ بزنید.</span><span class="en">WhatsApp, Telegram, website and Instagram leads come in on their own. You just see who to call today.</span><span class="ar">عملاء واتساب وتيليجرام والموقع وإنستغرام يدخلون تلقائياً. أنت ترى فقط بمن تتصل اليوم.</span><span class="de">Leads aus WhatsApp, Telegram, Website und Instagram kommen von selbst. Sie sehen nur, wen Sie heute anrufen.</span><span class="fr">Les prospects WhatsApp, Telegram, site web et Instagram arrivent seuls. Vous voyez simplement qui appeler aujourd’hui.</span></p>
+      <span class="go"><span class="fa">ببینید ←</span><span class="en">See it →</span><span class="ar">شاهد ←</span><span class="de">Ansehen →</span><span class="fr">Voir →</span></span></a>
+  </div>
+</section>
+
+<section id="profit">
+  <div class="lrow">
+    <div class="ltext"><div>
+      <div class="kicker"><span class="money-k"></span><span class="fa">لایهٔ مدیریتی · کلید سود</span><span class="en">Management layer · the profit key</span><span class="ar">طبقة الإدارة · مفتاح الربح</span><span class="de">Management-Ebene · der Gewinnschalter</span><span class="fr">Niveau direction · la clé du profit</span></div>
+      <h2><span class="fa">کلید سود را بزنید.<br>جواب‌ها <span class="d">به تومان</span> می‌آیند.</span><span class="en">Turn on the profit key.<br>Answers come <span class="d">in money</span>.</span><span class="ar">شغّل مفتاح الربح.<br>تأتي الإجابات <span class="d">بالمال</span>.</span><span class="de">Gewinnschalter an.<br>Antworten kommen <span class="d">in Geld</span>.</span><span class="fr">Activez la clé du profit.<br>Les réponses arrivent <span class="d">en argent</span>.</span></h2>
+      <p class="lead"><span class="fa">مدیرعامل یک کارخانهٔ قطعات صنعتی می‌پرسد: «سه ماه آینده پول را کجا خرج کنیم؟» لونا گلوگاه را پیدا می‌کند، هر گزینه را به تومان قیمت می‌گذارد و می‌گوید هر هفته تأخیر چقدر سود از دست می‌رود.</span><span class="en">The CEO of an industrial parts factory asks: “Where should we spend in the next three months?” Luna finds the bottleneck, prices each option, and shows how much profit every week of delay costs.</span><span class="ar">يسأل الرئيس التنفيذي لمصنع قطع صناعية: «أين ننفق في الأشهر الثلاثة القادمة؟» يجد Luna عنق الزجاجة، ويسعّر كل خيار، ويُظهر كم من الربح تكلّفه كل أسبوع تأخير.</span><span class="de">Der Geschäftsführer einer Industrieteile-Fabrik fragt: „Wo investieren wir in den nächsten drei Monaten?“ Luna findet den Engpass, beziffert jede Option und zeigt, wie viel Gewinn jede Woche Verzögerung kostet.</span><span class="fr">Le dirigeant d’une usine de pièces industrielles demande : « Où investir dans les trois prochains mois ? » Luna trouve le goulot, chiffre chaque option et montre ce que coûte chaque semaine de retard.</span></p></div>
+      <ul class="chk">
+        <li><span class="fa">گلوگاه واقعی را نشان می‌دهد، نه حدس</span><span class="en">Shows the real bottleneck, not a guess</span><span class="ar">يُظهر عنق الزجاجة الحقيقي، لا تخميناً</span><span class="de">Zeigt den echten Engpass, keine Vermutung</span><span class="fr">Montre le vrai goulot, pas une supposition</span></li>
+        <li><span class="fa">هزینهٔ هر هفته تأخیر را به تومان می‌گوید</span><span class="en">Puts a price on every week of delay</span><span class="ar">يضع سعراً لكل أسبوع تأخير</span><span class="de">Beziffert jede Woche Verzögerung</span><span class="fr">Chiffre chaque semaine de retard</span></li>
+        <li><span class="fa">هر عدد منبع و میزان اطمینانش را کنار خودش دارد</span><span class="en">Every number carries its source and confidence</span><span class="ar">كل رقم يحمل مصدره ودرجة الثقة به</span><span class="de">Jede Zahl zeigt Quelle und Sicherheit</span><span class="fr">Chaque chiffre indique sa source et sa fiabilité</span></li>
+      </ul>
+    </div>
+    <figure class="lvid"><video src="luna/profit.mp4" poster="luna/profit-poster.webp" muted loop playsinline preload="none" aria-label="Luna profit key demo"></video><figcaption class="ltag">● <span class="fa">ضبط‌شده از محصول لونا · دادهٔ نمایشی</span><span class="en">Recorded in Luna · demo data</span><span class="ar">مسجّل من Luna · بيانات تجريبية</span><span class="de">Aufgenommen in Luna · Demodaten</span><span class="fr">Enregistré dans Luna · données de démo</span></figcaption><button class="lsnd" type="button" hidden aria-label="Sound">🔇</button></figure>
+  </div>
+  <div class="lgal">
+    <figure class="lshot" tabindex="0"><img src="luna/brain.webp" width="1440" height="855" loading="lazy" alt=""><figcaption><span class="fa">مغز سازمان: همه‌چیز به هم وصل است</span><span class="en">The company brain: everything connected</span><span class="ar">عقل المؤسسة: كل شيء مترابط</span><span class="de">Das Unternehmensgehirn: alles verbunden</span><span class="fr">Le cerveau de l’entreprise : tout est relié</span><small><span class="fa">تصویر واقعی محصول · دادهٔ نمایشی</span><span class="en">Real product screen · demo data</span><span class="ar">شاشة حقيقية من المنتج · بيانات تجريبية</span><span class="de">Echter Produktbildschirm · Demodaten</span><span class="fr">Écran réel du produit · données de démo</span></small></figcaption></figure>
+    <figure class="lshot" tabindex="0"><img src="luna/brain-hub.webp" width="1440" height="855" loading="lazy" alt=""><figcaption><span class="fa">تصمیم‌ها، ریسک‌ها و مسائل در یک نگاه</span><span class="en">Decisions, risks and problems at a glance</span><span class="ar">القرارات والمخاطر والمشكلات في لمحة</span><span class="de">Entscheidungen, Risiken und Probleme auf einen Blick</span><span class="fr">Décisions, risques et problèmes d’un coup d’œil</span><small><span class="fa">تصویر واقعی محصول · دادهٔ نمایشی</span><span class="en">Real product screen · demo data</span><span class="ar">شاشة حقيقية من المنتج · بيانات تجريبية</span><span class="de">Echter Produktbildschirm · Demodaten</span><span class="fr">Écran réel du produit · données de démo</span></small></figcaption></figure>
+  </div>
+</section>
+
+<section id="sales">
+  <div class="lrow">
+    <div class="ltext"><div>
+      <div class="kicker"><span class="fa">لایهٔ فروش · برای شرکت‌هایی که دغدغهٔ فروش دارند</span><span class="en">Sales layer · for companies that need more sales</span><span class="ar">طبقة المبيعات · للشركات التي تريد مبيعات أكثر</span><span class="de">Vertriebsebene · für Unternehmen, die mehr verkaufen wollen</span><span class="fr">Niveau ventes · pour les entreprises qui veulent vendre plus</span></div>
+      <h2><span class="fa">CRM که <span class="d">خودش پر می‌شود.</span></span><span class="en">A CRM that <span class="d">fills itself.</span></span><span class="ar">CRM <span class="d">يملأ نفسه.</span></span><span class="de">Ein CRM, das <span class="d">sich selbst füllt.</span></span><span class="fr">Un CRM qui <span class="d">se remplit tout seul.</span></span></h2>
+      <p class="lead"><span class="fa">پیام‌های واتس‌اپ و تلگرام، سرنخ‌های سایت و اینستاگرام خودشان وارد پرونده می‌شوند. فروشنده تایپ نمی‌کند؛ فقط می‌بیند امروز به چه کسی زنگ بزند.</span><span class="en">WhatsApp and Telegram messages and website and Instagram leads file themselves. Your salespeople don’t type; they just see who to call today.</span><span class="ar">رسائل واتساب وتيليجرام وعملاء الموقع وإنستغرام تدخل الملف وحدها. مندوبو المبيعات لا يكتبون؛ يرون فقط بمن يتصلون اليوم.</span><span class="de">WhatsApp- und Telegram-Nachrichten sowie Website- und Instagram-Leads legen sich selbst ab. Ihr Vertrieb tippt nicht, er sieht nur, wen er heute anruft.</span><span class="fr">Les messages WhatsApp et Telegram et les prospects du site et d’Instagram se classent seuls. Vos commerciaux ne tapent rien ; ils voient qui appeler aujourd’hui.</span></p></div>
+      <ul class="chk">
+        <li><span class="fa">ورود خودکار از واتس‌اپ، تلگرام، سایت و اینستاگرام</span><span class="en">Automatic intake from WhatsApp, Telegram, website and Instagram</span><span class="ar">إدخال تلقائي من واتساب وتيليجرام والموقع وإنستغرام</span><span class="de">Automatische Erfassung aus WhatsApp, Telegram, Website und Instagram</span><span class="fr">Saisie automatique depuis WhatsApp, Telegram, le site et Instagram</span></li>
+        <li><span class="fa">گرمای هر مشتری را از رنگ چهره‌اش می‌بینید</span><span class="en">See how warm each customer is at a glance</span><span class="ar">ترى درجة حرارة كل عميل بنظرة</span><span class="de">Sehen Sie auf einen Blick, wie warm jeder Kunde ist</span><span class="fr">Voyez d’un coup d’œil la chaleur de chaque client</span></li>
+        <li><span class="fa">هر مشتری کنار سودی که آورده و ارزش معامله‌اش</span><span class="en">Each customer next to the profit they brought and the deal value</span><span class="ar">كل عميل بجانب الربح الذي جلبه وقيمة صفقته</span><span class="de">Jeder Kunde neben seinem Gewinn und dem Dealwert</span><span class="fr">Chaque client à côté du profit apporté et de la valeur de l’affaire</span></li>
+      </ul>
+    </div>
+    <figure class="lvid"><video src="luna/crm.mp4" poster="luna/crm-poster.webp" muted loop playsinline preload="none" aria-label="Luna CRM filling itself demo"></video><figcaption class="ltag">● <span class="fa">ضبط‌شده از محصول لونا · دادهٔ نمایشی</span><span class="en">Recorded in Luna · demo data</span><span class="ar">مسجّل من Luna · بيانات تجريبية</span><span class="de">Aufgenommen in Luna · Demodaten</span><span class="fr">Enregistré dans Luna · données de démo</span></figcaption><button class="lsnd" type="button" hidden aria-label="Sound">🔇</button></figure>
+  </div>
+  <div class="lgal">
+    <figure class="lshot" tabindex="0"><img src="luna/crm-board.webp" width="1440" height="960" loading="lazy" alt=""><figcaption><span class="fa">تابلوی فروش یک شرکت تجهیزات صنعتی</span><span class="en">An industrial equipment seller’s pipeline</span><span class="ar">خط مبيعات شركة معدات صناعية</span><span class="de">Pipeline eines Industrieausrüsters</span><span class="fr">Le pipeline d’un vendeur d’équipements industriels</span><small><span class="fa">تصویر واقعی محصول · دادهٔ نمایشی</span><span class="en">Real product screen · demo data</span><span class="ar">شاشة حقيقية من المنتج · بيانات تجريبية</span><span class="de">Echter Produktbildschirm · Demodaten</span><span class="fr">Écran réel du produit · données de démo</span></small></figcaption></figure>
+    <figure class="lshot" tabindex="0"><img src="luna/crm-panel.webp" width="720" height="1221" loading="lazy" alt=""><figcaption><span class="fa">پروندهٔ مشتری: گرما، کانال، سود و قدم بعدی</span><span class="en">Customer file: warmth, channel, profit and next step</span><span class="ar">ملف العميل: الحرارة والقناة والربح والخطوة التالية</span><span class="de">Kundenakte: Wärme, Kanal, Gewinn und nächster Schritt</span><span class="fr">Fiche client : chaleur, canal, profit et prochaine étape</span><small><span class="fa">تصویر واقعی محصول · دادهٔ نمایشی</span><span class="en">Real product screen · demo data</span><span class="ar">شاشة حقيقية من المنتج · بيانات تجريبية</span><span class="de">Echter Produktbildschirm · Demodaten</span><span class="fr">Écran réel du produit · données de démo</span></small></figcaption></figure>
+  </div>
+</section>
+
+<section id="leak">
+  <div class="kicker"><span class="fa">ماشین‌حساب نشتی فروش</span><span class="en">Sales leak calculator</span><span class="ar">حاسبة تسرّب المبيعات</span><span class="de">Rechner für Umsatzverluste</span><span class="fr">Calculateur de fuite de ventes</span></div>
+  <h2><span class="fa">هر ماه چقدر فروش روی میز می‌ماند؟</span><span class="en">How much sales do you leave on the table every month?</span><span class="ar">كم من المبيعات تتركها على الطاولة كل شهر؟</span><span class="de">Wie viel Umsatz lassen Sie jeden Monat liegen?</span><span class="fr">Combien de ventes laissez-vous filer chaque mois ?</span></h2>
+  <p class="lead"><span class="fa">عددهای خودتان را بنویسید. در جلسه، همین را با دادهٔ واقعی شما اندازه می‌گیریم.</span><span class="en">Enter your own numbers. In our meeting, we measure the same thing on your real data.</span><span class="ar">أدخل أرقامك. في الاجتماع نقيس الشيء نفسه على بياناتك الحقيقية.</span><span class="de">Geben Sie Ihre eigenen Zahlen ein. Im Gespräch messen wir dasselbe mit Ihren echten Daten.</span><span class="fr">Entrez vos chiffres. En rendez-vous, nous mesurons la même chose sur vos vraies données.</span></p>
+  <div class="leak">
+    <div class="pane">
+      <label><span class="fa">سرنخ در ماه</span><span class="en">Leads per month</span><span class="ar">العملاء المحتملون شهرياً</span><span class="de">Leads pro Monat</span><span class="fr">Prospects par mois</span><input id="lk-n" type="number" inputmode="numeric" min="0" value="120"></label>
+      <label><span class="fa">سرنخ‌هایی که دیر یا هیچ‌وقت جواب نمی‌گیرند (٪)</span><span class="en">Leads answered late or never (%)</span><span class="ar">العملاء الذين يُرد عليهم متأخراً أو لا يُرد (%)</span><span class="de">Leads, die spät oder nie beantwortet werden (%)</span><span class="fr">Prospects répondus tard ou jamais (%)</span><input id="lk-u" type="number" inputmode="numeric" min="0" max="100" value="30"></label>
+      <label><span class="fa">نرخ تبدیل سرنخ به فروش (٪)</span><span class="en">Lead-to-sale conversion (%)</span><span class="ar">معدل التحويل إلى بيع (%)</span><span class="de">Abschlussquote (%)</span><span class="fr">Taux de conversion (%)</span><input id="lk-c" type="number" inputmode="decimal" min="0" max="100" value="8"></label>
+      <label><span><span class="fa">میانگین هر فروش (میلیون تومان)</span><span class="en">Average sale (in your currency)</span><span class="ar">متوسط البيع (بعملتك)</span><span class="de">Durchschnittlicher Auftrag (in Ihrer Währung)</span><span class="fr">Vente moyenne (dans votre devise)</span></span><input id="lk-v" type="number" inputmode="decimal" min="0" value="45"></label>
+    </div>
+    <div class="res">
+      <div><span class="fa">هر ماه از دست می‌رود</span><span class="en">Lost every month</span><span class="ar">يضيع كل شهر</span><span class="de">Jeden Monat verloren</span><span class="fr">Perdu chaque mois</span></div>
+      <div class="big" id="lk-out">—</div>
+      <div class="unit"><span class="fa">میلیون تومان فروش</span><span class="en">in sales (same unit as your sale)</span><span class="ar">من المبيعات (بنفس وحدة البيع)</span><span class="de">Umsatz (gleiche Einheit wie Ihr Auftrag)</span><span class="fr">de ventes (même unité que votre vente)</span></div>
+      <div class="f" id="lk-f"></div>
+    </div>
   </div>
 </section>
 
@@ -230,18 +374,29 @@ body.present #pbar{display:flex;position:fixed;bottom:18px;left:50%;transform:tr
       <div class="kicker"><span class="fa">تماس با ما</span><span class="en">Contact us</span><span class="de">Kontakt</span><span class="fr">Contactez-nous</span><span class="ar">تواصل معنا</span></div>
       <h2><span class="fa">Δ بعدی سازمان شما کجاست؟</span><span class="en">Where is your organization's next Δ?</span><span class="de">Wo liegt das nächste Δ Ihres Unternehmens?</span><span class="fr">Où est le prochain Δ de votre organisation ?</span><span class="ar">أين الـΔ التالي لمؤسستك؟</span></h2>
       <p class="lead"><span class="fa">یک جلسهٔ نیازسنجی رایگان رزرو کنید. در کمتر از یک هفته، پیشنهاد و دموی راهکار را روی کار خودتان می‌بینید.</span><span class="en">Book a free needs assessment. Within a week you'll see a proposal and a demo of the solution on your own work.</span><span class="de">Buchen Sie eine kostenlose Bedarfsanalyse. Innerhalb einer Woche sehen Sie ein Angebot und eine Demo der Lösung mit Ihrer eigenen Arbeit.</span><span class="fr">Réservez une analyse des besoins gratuite. En une semaine, vous verrez une proposition et une démo de la solution sur votre propre travail.</span><span class="ar">احجز جلسة تقييم احتياجات مجانية. خلال أسبوع سترى عرضاً ونموذجاً تجريبياً للحل على عملك.</span></p>
+      <ol class="nsteps">
+        <li><i><span class="fa">۱</span><span class="en">1</span><span class="ar">١</span><span class="de">1</span><span class="fr">1</span></i><span class="fa">تماس ۱۵ دقیقه‌ای</span><span class="en">A 15-minute call</span><span class="ar">مكالمة ١٥ دقيقة</span><span class="de">Ein 15-minütiges Gespräch</span><span class="fr">Un appel de 15 minutes</span></li>
+        <li><i><span class="fa">۲</span><span class="en">2</span><span class="ar">٢</span><span class="de">2</span><span class="fr">2</span></i><span class="fa">دموی لونا روی دادهٔ خودتان، در کمتر از یک هفته</span><span class="en">A Luna demo on your own data, within a week</span><span class="ar">عرض Luna على بياناتك خلال أسبوع</span><span class="de">Eine Luna-Demo mit Ihren Daten, innerhalb einer Woche</span><span class="fr">Une démo de Luna sur vos données, en moins d’une semaine</span></li>
+        <li><i><span class="fa">۳</span><span class="en">3</span><span class="ar">٣</span><span class="de">3</span><span class="fr">3</span></i><span class="fa">پایلوت ۲ تا ۴ هفته‌ای با Δ توافق‌شده</span><span class="en">A 2–4 week pilot with an agreed Δ</span><span class="ar">تجربة من ٢ إلى ٤ أسابيع مع Δ متفق عليه</span><span class="de">Ein Pilot von 2–4 Wochen mit vereinbartem Δ</span><span class="fr">Un pilote de 2 à 4 semaines avec un Δ convenu</span></li>
+      </ol>
     </div>
     <div class="cinfo">
-      <a href="tel:+989128361573"><span class="ico">📞</span><span><span class="fa"><bdi class="ltr">۰۹۱۲ ۸۳۶ ۱۵۷۳</bdi></span><span class="en"><bdi class="ltr">+98 912 836 1573</bdi></span><span class="de"><bdi class="ltr">+98 912 836 1573</bdi></span><span class="fr"><bdi class="ltr">+98 912 836 1573</bdi></span><span class="ar"><bdi class="ltr">+98 912 836 1573</bdi></span><small><span class="fa">تماس مستقیم</span><span class="en">Call us</span><span class="de">Rufen Sie uns an</span><span class="fr">Appelez-nous</span><span class="ar">اتصل بنا</span></small></span></a>
-      <a href="mailto:hi@deltaup.ir"><span class="ico">✉️</span><span><bdi class="ltr">hi@deltaup.ir</bdi><small><span class="fa">ایمیل</span><span class="en">Email</span><span class="de">E-Mail</span><span class="fr">E-mail</span><span class="ar">البريد الإلكتروني</span></small></span></a>
-      <a href="https://deltaup.ir" target="_blank" rel="noopener"><span class="ico">🌐</span><span><bdi class="ltr">deltaup.ir</bdi><small><span class="fa">وب‌سایت</span><span class="en">Website</span><span class="de">Website</span><span class="fr">Site web</span><span class="ar">الموقع الإلكتروني</span></small></span></a>
-      <a href="https://maps.google.com/?q=Oman" target="_blank" rel="noopener"><span class="ico">📍</span><span><span class="fa">عمان</span><span class="en">Oman</span><span class="de">Oman</span><span class="fr">Oman</span><span class="ar">سلطنة عُمان</span><small><span class="fa">آدرس</span><span class="en">Address</span><span class="de">Adresse</span><span class="fr">Adresse</span><span class="ar">العنوان</span></small></span></a>
+      <a class="wa" data-wa="https://wa.me/989306952808" href="https://wa.me/989306952808" target="_blank" rel="noopener"><span class="ico">💬</span><span><bdi class="ltr">+98 930 695 2808</bdi><small><span class="fa">واتس‌اپ · رضا</span><span class="en">WhatsApp · Reza</span><span class="ar">واتساب · رضا</span><span class="de">WhatsApp · Reza</span><span class="fr">WhatsApp · Reza</span></small></span></a>
+      <a class="tg" href="https://t.me/+989306952808" target="_blank" rel="noopener"><span class="ico">✈️</span><span><bdi class="ltr">+98 930 695 2808</bdi><small><span class="fa">تلگرام · رضا</span><span class="en">Telegram · Reza</span><span class="ar">تيليجرام · رضا</span><span class="de">Telegram · Reza</span><span class="fr">Telegram · Reza</span></small></span></a>
+      <a href="tel:+989128361573"><span class="ico">📞</span><span><span class="fa"><bdi class="ltr">۰۹۱۲ ۸۳۶ ۱۵۷۳</bdi></span><span class="en"><bdi class="ltr">+98 912 836 1573</bdi></span><span class="ar"><bdi class="ltr">+98 912 836 1573</bdi></span><span class="de"><bdi class="ltr">+98 912 836 1573</bdi></span><span class="fr"><bdi class="ltr">+98 912 836 1573</bdi></span><small><span class="fa">تماس مستقیم</span><span class="en">Call us</span><span class="ar">اتصل بنا</span><span class="de">Rufen Sie uns an</span><span class="fr">Appelez-nous</span></small></span></a>
+      <a class="wa" data-wa="https://wa.me/96875291282" href="https://wa.me/96875291282" target="_blank" rel="noopener"><span class="ico">💬</span><span><bdi class="ltr">+968 7529 1282</bdi><small><span class="fa">واتس‌اپ · پارسا (عمان)</span><span class="en">WhatsApp · Parsa (Oman)</span><span class="ar">واتساب · بارسا (عُمان)</span><span class="de">WhatsApp · Parsa (Oman)</span><span class="fr">WhatsApp · Parsa (Oman)</span></small></span></a>
+      <a class="wide" href="mailto:hi@deltaup.ir"><span class="ico">✉️</span><span><bdi class="ltr">hi@deltaup.ir</bdi><small><span class="fa">ایمیل</span><span class="en">Email</span><span class="ar">البريد الإلكتروني</span><span class="de">E-Mail</span><span class="fr">E-mail</span></small></span></a>
+      <a class="wide" href="https://deltaup.ir" target="_blank" rel="noopener"><span class="ico">🌐</span><span><bdi class="ltr">deltaup.ir</bdi><small><span class="fa">وب‌سایت</span><span class="en">Website</span><span class="ar">الموقع الإلكتروني</span><span class="de">Website</span><span class="fr">Site web</span></small></span></a>
+      <a class="wide" href="https://www.google.com/maps/search/?api=1&query=%D9%85%DB%8C%D8%AF%D8%A7%D9%86%20%D8%A8%D8%A7%D9%87%D9%86%D8%B1%20%DA%A9%D8%B1%D8%AC" target="_blank" rel="noopener"><span class="ico">📍</span><span><span class="fa">کرج، میدان باهنر، بلوار باهنر، استقلال شمالی</span><span class="en">Bahonar Square, Bahonar Blvd, North Esteghlal, Karaj, Iran</span><span class="ar">كرج، ميدان باهنر، بلوار باهنر، استقلال الشمالي، إيران</span><span class="de">Bahonar-Platz, Bahonar-Boulevard, Nord-Esteghlal, Karadsch, Iran</span><span class="fr">Place Bahonar, boulevard Bahonar, Esteghlal Nord, Karaj, Iran</span><small><span class="fa">دفتر کرج</span><span class="en">Karaj office</span><span class="ar">مكتب كرج</span><span class="de">Büro Karadsch</span><span class="fr">Bureau de Karaj</span></small></span></a>
+      <a class="wide" href="https://maps.app.goo.gl/URX92TTu9hCQWXaG9" target="_blank" rel="noopener"><span class="ico">📍</span><span><bdi class="ltr">Zoha Noorah Building, G Floor, Al Khuwair, Muscat</bdi><small><span class="fa">دفتر مسقط، عمان</span><span class="en">Muscat office, Oman</span><span class="ar">مكتب مسقط، سلطنة عُمان</span><span class="de">Büro Maskat, Oman</span><span class="fr">Bureau de Mascate, Oman</span></small></span></a>
     </div>
   </div>
 </section>
 
 <footer><svg class="logo" style="height:24px;margin:0 auto 8px" viewBox="0 0 538 160"><use href="#du-logo"/></svg><span class="fa">دلتا آپ · ما Δ می‌فروشیم، نه ابزار.</span><span class="en">DeltaUp · We sell the Δ, not the tool.</span><span class="de">DeltaUp · Wir verkaufen das Δ, nicht das Werkzeug.</span><span class="fr">DeltaUp · Nous vendons le Δ, pas l’outil.</span><span class="ar">دلتا آب · نبيع الـΔ، لا الأداة.</span></footer>
 
+<div id="qbar"><a class="wa" data-wa="https://wa.me/989306952808" href="https://wa.me/989306952808" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg><span class="fa">واتس‌اپ</span><span class="en">WhatsApp</span><span class="ar">واتساب</span><span class="de">WhatsApp</span><span class="fr">WhatsApp</span></a><a class="tg" href="https://t.me/+989306952808" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1-1 .2-1.5L20.6 2.8c.9-.3 1.6.2 1.3 1.5Z"/></svg><span class="fa">تلگرام</span><span class="en">Telegram</span><span class="ar">تيليجرام</span><span class="de">Telegram</span><span class="fr">Telegram</span></a><a class="ph" href="tel:+989128361573">📞 <span class="fa">تماس</span><span class="en">Call</span><span class="ar">اتصال</span><span class="de">Anrufen</span><span class="fr">Appeler</span></a></div>
+<div id="lbox" role="dialog" aria-modal="true" aria-label="Image"><img alt=""></div>
 <div id="pbar"><button onclick="go(-1)" aria-label="Previous">‹</button><div class="dots" id="dots"></div><button onclick="go(1)" aria-label="Next">›</button><button onclick="exitPresent()" aria-label="Exit">✕</button></div>
 
 <script>
@@ -277,7 +432,19 @@ function render(){
  fill(9,true);
 }
 var ft;function fill(n,anim){clearTimeout(ft);var k=anim?0:n;(function step(){document.querySelectorAll("#layList li").forEach(function(e,i){e.classList.toggle("on",i<k)});document.getElementById("mbar").style.height=(35+65*k/9)+"%";document.getElementById("mcount").textContent="Δ "+num(k)+"/"+num(9);if(k<n){k++;ft=setTimeout(step,anim?260:0)}})()}
-function setLang(l){lang=l;document.body.classList.remove("fa","en","ar","de","fr");document.body.classList.add(l);document.documentElement.lang=l;document.documentElement.dir=(l=="fa"||l=="ar")?"rtl":"ltr";document.title=W[l].title;document.getElementById("langSel").value=l;try{localStorage.setItem("du-lang",l)}catch(e){}render();dots()}
+/* Luna: videos play only while visible; lightbox; leak calculator; WhatsApp greeting by language */
+var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload="auto";var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.35});
+document.querySelectorAll(".lvid video").forEach(function(v){vio.observe(v);var sb=v.parentNode.querySelector(".lsnd");v.addEventListener("timeupdate",function(){if(sb.hidden&&(v.webkitAudioDecodedByteCount>0||v.mozHasAudio||(v.audioTracks&&v.audioTracks.length)))sb.hidden=false});sb.onclick=function(){v.muted=!v.muted;sb.textContent=v.muted?"🔇":"🔊";if(!v.muted){v.currentTime=0;v.play()}};v.onclick=function(){var f=v.requestFullscreen||v.webkitEnterFullscreen||v.webkitRequestFullscreen;if(f)f.call(v)}});
+var lb=document.getElementById("lbox");
+document.querySelectorAll(".lshot").forEach(function(f){function open(){lb.querySelector("img").src=f.querySelector("img").src;lb.classList.add("on")}f.onclick=open;f.onkeydown=function(e){if(e.key=="Enter"||e.key==" "){e.preventDefault();open()}}});
+lb.onclick=function(){lb.classList.remove("on")};
+document.addEventListener("keydown",function(e){if(e.key=="Escape")lb.classList.remove("on")});
+var LOC={fa:"fa-IR",en:"en-US",ar:"ar-EG",de:"de-DE",fr:"fr-FR"};
+function leak(){var g=function(id){var x=parseFloat(document.getElementById(id).value);return isFinite(x)&&x>0?x:0};var n=g("lk-n"),u=Math.min(g("lk-u"),100),c=Math.min(g("lk-c"),100),v=g("lk-v");var r=n*u/100*c/100*v;var f=function(x,d){return x.toLocaleString(LOC[lang],{maximumFractionDigits:d})};document.getElementById("lk-out").textContent="≈ "+f(r,r<10?1:0);document.getElementById("lk-f").textContent=f(n,0)+" × "+f(u,0)+"% × "+f(c,1)+"% × "+f(v,1)}
+["lk-n","lk-u","lk-c","lk-v"].forEach(function(id){document.getElementById(id).oninput=leak});
+var WAMSG={fa:"سلام، می‌خواهم دموی لونا را برای شرکتم ببینم.",en:"Hi, I'd like to see a Luna demo for my company.",ar:"مرحباً، أود مشاهدة عرض Luna لشركتي.",de:"Hallo, ich möchte eine Luna-Demo für mein Unternehmen sehen.",fr:"Bonjour, je voudrais une démo de Luna pour mon entreprise."};
+function waLinks(){document.querySelectorAll("a[data-wa]").forEach(function(a){a.href=a.dataset.wa+"?text="+encodeURIComponent(WAMSG[lang])})}
+function setLang(l){lang=l;document.body.classList.remove("fa","en","ar","de","fr");document.body.classList.add(l);document.documentElement.lang=l;document.documentElement.dir=(l=="fa"||l=="ar")?"rtl":"ltr";document.title=W[l].title;document.getElementById("langSel").value=l;try{localStorage.setItem("du-lang",l)}catch(e){}render();dots();leak();waLinks()}
 function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem("du-theme",t)}catch(e){}document.querySelectorAll("#themes button").forEach(function(b){b.classList.toggle("on",b.dataset.t==t)})}
 document.querySelectorAll("#themes button").forEach(function(b){b.onclick=function(){setTheme(b.dataset.t)}});
 document.getElementById("langSel").onchange=function(){setLang(this.value)};

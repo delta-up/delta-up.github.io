@@ -1,0 +1,38 @@
+import { createRequire } from 'node:module';
+import fs from 'node:fs';
+const { chromium } = createRequire(import.meta.url)('playwright');
+const snapshot = fs.readFileSync(new URL('./factory-brain.json', import.meta.url), 'utf8');
+const out = process.env.OUT || 'media';
+const browser = await chromium.launch({ args: ['--enable-webgl', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+const page = await browser.newPage({ viewport: { width: 1280, height: 760 }, deviceScaleFactor: 2 });
+page.on('pageerror', (e) => console.error('PAGE', e.message));
+await page.route((u) => u.pathname.startsWith('/api/'), (route) => {
+  const p = new URL(route.request().url()).pathname;
+  if (p.includes('/brain/snapshot')) return route.fulfill({ contentType: 'application/json', body: snapshot });
+  if (p.includes('/brain/events')) return route.fulfill({ contentType: 'text/event-stream', body: ': heartbeat\n\n' });
+  return route.fulfill({ json: [] });
+});
+await page.goto('http://127.0.0.1:3010/features/brain/tests/brainOrgSnapshot.fixture.json');
+await page.setContent('<html dir="rtl"><head><link rel="stylesheet" href="/vazirmatn.css"></head><body><div id="test-root"></div></body></html>');
+await page.evaluate(async () => {
+  const refresh = await import('/@react-refresh'); refresh.default.injectIntoGlobalHook(window);
+  window.$RefreshReg$ = () => {}; window.$RefreshSig$ = () => (t) => t; window.__vite_plugin_react_preamble_installed__ = true;
+  const runtime = await import('/utils/i18n/runtime.ts'); await runtime.loadUiCatalog();
+  const React = await import('/node_modules/.vite/deps/react.js');
+  const client = await import('/node_modules/.vite/deps/react-dom_client.js');
+  const { BrainLauncherButton } = await import('/features/brain/components/BrainLauncherButton.tsx');
+  localStorage.setItem('brain:source', 'demo'); sessionStorage.setItem('brain:introSeen', 'true');
+  history.replaceState({}, '', location.pathname + '?source=demo&test=1');
+  (client.createRoot || client.default.createRoot)(document.getElementById('test-root')).render((React.createElement || React.default.createElement)(BrainLauncherButton));
+});
+await page.locator('#test-root > button').click();
+await page.waitForFunction(() => document.getElementById('scene')?.dataset.intro === 'done', null, { timeout: 120000 });
+await page.waitForTimeout(3500);
+await page.screenshot({ path: out + '/brain-home.png' });
+const hub = process.env.HUB || 'decisions';
+await page.locator(`.hub-glyph[data-hub="${hub}"]`).click({ force: true });
+await page.waitForSelector('.brain-root[data-level="hub"]', { timeout: 60000 });
+await page.waitForTimeout(4000);
+await page.screenshot({ path: out + `/brain-hub-${hub}.png` });
+await browser.close();
+console.log('ok');
