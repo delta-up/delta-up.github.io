@@ -485,7 +485,7 @@ io.observe(document.getElementById("layers"));
 if(location.hash.indexOf("#present")==0)present(+(location.hash.split("-")[1]||0));
 
 /* Set to the Cloudflare Worker URL (tools/lead-worker.js) to send the form straight to Telegram. */
-var LEAD_ENDPOINT="";
+var LEAD_ENDPOINT="https://deltaup-lead.karnil227.workers.dev";
 (function(){var f=document.getElementById("lead");if(!f)return;var IDX={fa:0,en:1,ar:2,de:3,fr:4};
 function ph(){f.querySelectorAll("[data-ph]").forEach(function(i){i.placeholder=i.dataset.ph.split("|")[IDX[lang]]})}
 var _sl=setLang;setLang=function(l){_sl(l);ph()};ph();
@@ -498,7 +498,7 @@ f.onsubmit=function(e){e.preventDefault();var t=text();if(!t)return;if(!LEAD_END
  var d=new FormData(f),b=f.querySelector(".lf-send");b.disabled=true;
  fetch(LEAD_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:d.get("name"),org:d.get("org"),phone:d.get("phone"),need:d.get("need"),lang:lang,website:d.get("website")})})
  .then(function(r){if(!r.ok)throw 0;f.reset();done(lang=="fa"?"درخواست شما رسید ✓ به‌زودی تماس می‌گیریم.":"Received ✓ We'll call you soon.")})
- .catch(function(){wa(t)}).then(function(){b.disabled=false})};
+ .catch(function(){var m=document.getElementById("lf-msg");m.hidden=false;m.innerHTML="";var l=document.createElement("a");l.className="lf-send";l.style.textDecoration="none";l.target="_blank";l.rel="noopener";l.href="https://wa.me/989306952808?text="+encodeURIComponent(t);l.textContent=lang=="fa"?"ارسال درخواست از واتس‌اپ ←":"Send via WhatsApp →";m.appendChild(l)}).then(function(){b.disabled=false})};
 document.getElementById("lf-tg").onclick=function(e){e.preventDefault();var t=text();if(!t)return;try{navigator.clipboard.writeText(t)}catch(x){}window.open("https://t.me/Rezamahmoudi07","_blank");done(lang=="fa"?"متن کپی شد؛ در تلگرام Paste و ارسال کنید ✓":"Copied, paste it in Telegram and send ✓")};})();
 </script>
 </body>

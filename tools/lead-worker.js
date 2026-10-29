@@ -17,6 +17,8 @@ export default {
     const r = await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: env.CHAT_ID, text }),
     });
-    return new Response(r.ok ? 'ok' : 'telegram error', { status: r.ok ? 200 : 502, headers: cors });
+    if (r.ok) return new Response('ok', { headers: cors });
+    const why = (await r.json().catch(() => ({}))).description || r.status;
+    return new Response(`telegram error: ${why}`, { status: 502, headers: cors });
   },
 };
