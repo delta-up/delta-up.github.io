@@ -212,6 +212,17 @@ body.present #qbar{display:none}
 .lf-ok b{font-size:21px;line-height:1.6}.lf-ok span{color:var(--mute);font-weight:600;line-height:1.9}
 .lead-form.sent>*:not(.lf-title):not(.lf-msg){display:none}
 @media(max-width:640px){.lf-row{grid-template-columns:1fr}}
+#faq{padding-top:60px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.faq-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 24px;transition:transform .2s,border-color .2s}
+.faq-card:hover{transform:translateY(-2px);border-color:var(--acc2)}
+.faq-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.faq-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--panel2)}
+.faq-a{font-weight:800;font-size:15px;padding:5px 14px;border-radius:30px;background:rgba(46,230,166,.16);color:var(--acc2);white-space:nowrap}
+.faq-card h3{margin:0 0 8px;font-size:18px;line-height:1.6}
+.faq-card p{margin:0;color:var(--mute);line-height:1.9}
+.faq-cta{display:inline-block;margin-top:18px;font-weight:800;color:var(--acc);text-decoration:none}
+@media(max-width:800px){.faq-grid{grid-template-columns:1fr}}
 @media print{header.top,#pbar{display:none!important}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}section{break-inside:avoid}}
 </style>
 </head>
@@ -381,6 +392,18 @@ body.present #qbar{display:none}
   </div>
 </section>
 
+<section id="faq">
+  <div class="kicker"><span class="fa">سؤال‌های مدیران</span><span class="en">Questions managers ask</span><span class="ar">أسئلة المديرين</span><span class="de">Fragen von Führungskräften</span><span class="fr">Les questions des dirigeants</span></div>
+  <h2><span class="fa">چهار سؤالی که قبل از تماس می‌پرسید</span><span class="en">The four questions you ask before calling</span><span class="ar">الأسئلة الأربعة قبل أن تتصل</span><span class="de">Die vier Fragen vor dem Anruf</span><span class="fr">Les quatre questions avant d’appeler</span></h2>
+  <div class="faq-grid">
+    <div class="faq-card"><div class="faq-top"><span class="faq-ico">🔒</span><span class="faq-a"><span class="fa">داخل ایران</span><span class="en">Stays in Iran</span><span class="ar">داخل إيران</span><span class="de">Bleibt im Iran</span><span class="fr">Reste en Iran</span></span></div><h3><span class="fa">داده‌های ما کجا ذخیره می‌شوند؟</span><span class="en">Where is our data stored?</span><span class="ar">أين تُخزَّن بياناتنا؟</span><span class="de">Wo werden unsere Daten gespeichert?</span><span class="fr">Où sont stockées nos données ?</span></h3><p><span class="fa">تمام اطلاعات محرمانهٔ شما در زیرساخت امن داخلی خودتان یا سرورهای اختصاصی رمزنگاری‌شده می‌ماند و از کشور خارج نمی‌شود.</span><span class="en">All your confidential data stays on your own secure infrastructure or on dedicated encrypted servers, and never leaves the country.</span><span class="ar">تبقى كل بياناتك السرية على بنيتك التحتية الآمنة أو على خوادم مخصّصة مشفّرة، ولا تخرج من البلد.</span><span class="de">Alle vertraulichen Daten bleiben auf Ihrer eigenen sicheren Infrastruktur oder auf dedizierten verschlüsselten Servern und verlassen das Land nicht.</span><span class="fr">Toutes vos données confidentielles restent sur votre infrastructure sécurisée ou sur des serveurs dédiés chiffrés, et ne quittent pas le pays.</span></p></div>
+    <div class="faq-card"><div class="faq-top"><span class="faq-ico">🔗</span><span class="faq-a"><span class="fa">بله</span><span class="en">Yes</span><span class="ar">نعم</span><span class="de">Ja</span><span class="fr">Oui</span></span></div><h3><span class="fa">با سیستم‌های مالی و حسابداری ما سازگار است؟</span><span class="en">Does it work with our finance and accounting systems?</span><span class="ar">هل يتوافق مع أنظمتنا المالية والمحاسبية؟</span><span class="de">Funktioniert es mit unseren Finanz- und Buchhaltungssystemen?</span><span class="fr">Est-ce compatible avec nos systèmes financiers et comptables ?</span></h3><p><span class="fa">به سپیدار، همکاران سیستم، فایل‌های اکسل و وب‌سرویس‌های سازمانی موجود شما وصل می‌شود.</span><span class="en">It connects to Sepidar, Hamkaran System, Excel files and your existing enterprise web services.</span><span class="ar">يتصل بسبيدار وهمكاران سيستم وملفات إكسل وخدمات الويب المؤسسية لديك.</span><span class="de">Es verbindet sich mit Sepidar, Hamkaran System, Excel-Dateien und Ihren bestehenden Unternehmens-Webservices.</span><span class="fr">Il se connecte à Sepidar, Hamkaran System, aux fichiers Excel et à vos services web existants.</span></p></div>
+    <div class="faq-card"><div class="faq-top"><span class="faq-ico">☁️</span><span class="faq-a"><span class="fa">خیر</span><span class="en">No</span><span class="ar">لا</span><span class="de">Nein</span><span class="fr">Non</span></span></div><h3><span class="fa">به سخت‌افزار جدید یا استخدام تیم IT نیاز داریم؟</span><span class="en">Do we need new hardware or an IT team?</span><span class="ar">هل نحتاج أجهزة جديدة أو فريق تقنية معلومات؟</span><span class="de">Brauchen wir neue Hardware oder ein IT-Team?</span><span class="fr">Faut-il du nouveau matériel ou une équipe informatique ?</span></h3><p><span class="fa">لونا ابری است و روی زیرساخت فعلی شما، بدون هیچ تجهیزات اضافه، راه‌اندازی می‌شود.</span><span class="en">Luna is cloud-based and runs on your current setup, with no extra equipment.</span><span class="ar">Luna سحابي ويعمل على بنيتك الحالية دون أي معدات إضافية.</span><span class="de">Luna ist cloudbasiert und läuft auf Ihrer bestehenden Infrastruktur, ohne zusätzliche Geräte.</span><span class="fr">Luna est dans le cloud et fonctionne sur votre infrastructure actuelle, sans équipement supplémentaire.</span></p></div>
+    <div class="faq-card"><div class="faq-top"><span class="faq-ico">⏱️</span><span class="faq-a"><span class="fa">زیر ۲ هفته</span><span class="en">Under 2 weeks</span><span class="ar">أقل من أسبوعين</span><span class="de">Unter 2 Wochen</span><span class="fr">Moins de 2 semaines</span></span></div><h3><span class="fa">هزینه و زمان بازگشت سرمایه چقدر است؟</span><span class="en">What does it cost, and how fast is the return?</span><span class="ar">كم التكلفة ومتى يعود الاستثمار؟</span><span class="de">Was kostet es und wie schnell rechnet es sich?</span><span class="fr">Quel coût, et en combien de temps est-ce rentable ?</span></h3><p><span class="fa">پایلوت‌های از پیش‌طراحی‌شده در کمتر از ۲ هفته مستقر می‌شوند و نتیجهٔ بهره‌وری از ماه اول دیده می‌شود.</span><span class="en">Pre-built pilots go live in under 2 weeks, and the productivity results show from the first month.</span><span class="ar">تُطلق التجارب الجاهزة في أقل من أسبوعين، وتظهر نتائج الإنتاجية من الشهر الأول.</span><span class="de">Vorgefertigte Piloten laufen in unter 2 Wochen, Ergebnisse zeigen sich ab dem ersten Monat.</span><span class="fr">Les pilotes prêts à l’emploi démarrent en moins de 2 semaines, avec des résultats dès le premier mois.</span></p></div>
+  </div>
+  <a class="faq-cta" href="#lead"><span class="fa">سؤال دیگری دارید؟ همین حالا بپرسید ←</span><span class="en">Another question? Ask us now →</span><span class="ar">سؤال آخر؟ اسألنا الآن ←</span><span class="de">Noch eine Frage? Jetzt fragen →</span><span class="fr">Une autre question ? Posez-la maintenant →</span></a>
+</section>
+
 <section id="contact">
   <div class="contact">
     <div>
@@ -403,7 +426,7 @@ body.present #qbar{display:none}
         <label><input type="radio" name="need" value="هر دو"><span><span class="fa">هر دو</span><span class="en">Both</span><span class="ar">كلاهما</span><span class="de">Beides</span><span class="fr">Les deux</span></span></label>
       </div>
       <button type="submit" class="lf-send"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg><span class="fa">ارسال درخواست</span><span class="en">Send request</span><span class="ar">إرسال الطلب</span><span class="de">Anfrage senden</span><span class="fr">Envoyer</span></button>
-      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip-path:inset(50%);pointer-events:none">
       <p class="lf-msg" id="lf-msg" hidden></p>
     </form>
     <div class="cinfo">
