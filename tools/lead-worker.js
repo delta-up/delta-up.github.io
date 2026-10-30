@@ -1,6 +1,6 @@
-// Cloudflare Worker: receives the demo form from deltaup.ir (and delta-up.github.io) and sends it to your Telegram.
+// Cloudflare Worker: receives the demo form from Karnil and legacy DeltaUp domains and sends it to your Telegram.
 // The bot token and your chat id live only in this Worker's secrets (BOT_TOKEN, CHAT_ID), never in the website.
-const ORIGINS = ['https://deltaup.ir', 'https://www.deltaup.ir', 'https://delta-up.github.io', 'http://deltaup.ir'];
+const ORIGINS = ['https://karnil.ir', 'https://www.karnil.ir', 'http://karnil.ir', 'https://deltaup.ir', 'https://www.deltaup.ir', 'https://delta-up.github.io', 'http://deltaup.ir'];
 const clip = (v, n) => String(v ?? '').replace(/[<>]/g, '').trim().slice(0, n);
 
 export default {
