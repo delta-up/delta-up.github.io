@@ -1,6 +1,5 @@
 /* Visitor tracking -> Telegram (through tools/lead-worker.js, path /visit).
-   Each visit sends one Telegram message on arrival; the same message is then edited
-   as the visitor moves around, so it always shows the latest picture of the visit.
+   Each visit sends one Telegram message on arrival, and nothing after that.
    Open any page with ?notrack once to stop tracking your own browser (?track undoes it). */
 (function () {
   'use strict';
@@ -123,6 +122,7 @@
     });
   }
   function flush(force) {
+    return; /* only the arrival is reported; the message is no longer edited afterwards */
     var t = Date.now();
     if (!force && t - lastFlush < 15000) return;
     if (starting) { pend = 1; return; }
