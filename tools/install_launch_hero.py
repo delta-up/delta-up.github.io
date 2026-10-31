@@ -20,3 +20,9 @@ if 'class="launch-film"' not in s:
  p.write_text(s)
  print('Hero video installed')
 else: print('Hero video already installed')
+
+# Visitor tracking (track.js -> Telegram); the page generator does not add it.
+s=p.read_text()
+if 'src="/track.js"' not in s:
+ p.write_text(s.replace('</body>','<script src="/track.js" defer></script>\n</body>'))
+ print('Visitor tracking installed')

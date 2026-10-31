@@ -22,3 +22,23 @@ images, not a recording of the running product. After regenerating `index.html`,
 run `python tools/install_launch_hero.py` to restore this homepage customization.
 The video is loaded only after a visitor chooses to play it. No API credentials
 or external media-generation calls are needed in production.
+
+## Visitor notifications in Telegram
+
+`track.js` (loaded on `/`, `/site/`, `/deck/`, `/form/`) reports every visit to the
+same Cloudflare Worker as the lead form (`tools/lead-worker.js`, path `/visit`).
+Each visit sends **one** Telegram message on arrival, and that message is then
+edited as the visitor moves around. It shows: new or returning visitor (and the
+name from a form they sent earlier), entry time (Tehran), city, country and ISP,
+where they came from (search, Telegram, a UTM campaign, a direct visit…), the
+landing page, device, time on site, the sections where they stayed longest,
+videos watched, and calls, WhatsApp, Telegram, PDF and form clicks.
+
+* **Deploy:** paste the new `tools/lead-worker.js` into the existing Worker
+  (`deltaup-lead`). You don't need new secrets.
+* **Exclude yourself:** open `https://karnil.ir/?notrack` once on each of your own
+  browsers. `?track` turns tracking back on.
+* Returning visitors are recognised by the browser (localStorage). A different
+  device, private mode or cleared data counts as a new visitor. A visitor's
+  location comes from their IP, so it shows the VPN's location when they use one.
+* After regenerating `index.html`, `python tools/install_launch_hero.py` also adds the tracking script back.
