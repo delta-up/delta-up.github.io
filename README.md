@@ -27,12 +27,10 @@ or external media-generation calls are needed in production.
 
 `track.js` (loaded on `/`, `/site/`, `/deck/`, `/form/`) reports every visit to the
 same Cloudflare Worker as the lead form (`tools/lead-worker.js`, path `/visit`).
-Each visit sends **one** Telegram message on arrival, and that message is then
-edited as the visitor moves around. It shows: new or returning visitor (and the
-name from a form they sent earlier), entry time (Tehran), city, country and ISP,
-where they came from (search, Telegram, a UTM campaign, a direct visit…), the
-landing page, device, time on site, the sections where they stayed longest,
-videos watched, and calls, WhatsApp, Telegram, PDF and form clicks.
+Each visit sends **one** Telegram message on arrival, with no later updates. It shows:
+new or returning visitor (and the name from a form they sent earlier), entry time
+(Tehran), city, country and ISP, where they came from (search, Telegram, a UTM
+campaign, a direct visit…), the landing page and the device.
 
 * **Deploy:** paste the new `tools/lead-worker.js` into the existing Worker
   (`deltaup-lead`). You don't need new secrets.
