@@ -163,7 +163,7 @@ function build(b, request, keepEvents) {
   const where = [cf.city, cf.country].filter(Boolean).join('، ');
   const lead = v.lead && v.lead.name ? ` · ${esc(v.lead.name, 40)}` : '';
   L.push(`<b>${n === 1 ? '🆕 بازدیدکنندهٔ جدید' : `🔁 بازدیدکنندهٔ قدیمی · بار ${ordinal(n)}`}${lead}</b>${where ? ' · ' + esc(where, 60) : ''}`);
-  L.push(online);
+  if (b.type === 'update') L.push(online);
   L.push('');
 
   // when / where / from
@@ -192,7 +192,8 @@ function build(b, request, keepEvents) {
   L.push(`    ${dev.join(' · ')}`);
   L.push('');
 
-  // engagement
+  // engagement (only when the page sends updates; arrival reports stop here)
+  if (b.type !== 'update') { L.push(`<i>🆔 بازدیدکننده ${esc(v.id, 16)}</i>`); return L.join('\n'); }
   const scroll = Object.entries(s.scroll || {}).filter(([, x]) => num(x) > 0).map(([p, x]) => `${esc(p, 20)} ${Math.round(num(x, 100))}%`).join('، ');
   L.push(`⏱ <b>مدت حضور:</b> ${dur(tNow - t0)} · فعال ${dur(s.act)}${scroll ? ` · اسکرول ${scroll}` : ''}`);
   const pages = (Array.isArray(s.pages) ? s.pages : []).slice(-12).map((p) => esc(p, 20));
